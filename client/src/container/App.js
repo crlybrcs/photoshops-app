@@ -1,13 +1,13 @@
-import React from "react";
-import "./App.css";
-import Test from "../components/Test";
+import React from 'react';
+import './App.css';
+import Home from '../components/Home';
+
 function App() {
-  return (
-    <div className="App">
-      <h1>hello</h1>
-      <Test />
-    </div>
-  );
+	return (
+		<div className="App">
+			<Home className="class-home" />
+		</div>
+	);
 }
 
 export default App;
