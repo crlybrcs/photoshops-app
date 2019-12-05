@@ -4,13 +4,13 @@ const router = express.Router();
 const axios = require("axios");
 
 router.post("/test", (req, res) => {
-  console.log("MMMMMMMMMMMMMM", req);
-  // const keywords = "betty crocker spatula red";
+  //const keywords = "betty crocker spatula red";
 
-  // const keywords = req.body.keywords
+  const keywords = req.body.keywords;
+  console.log(keywords);
   axios
     .get(
-      `https://api.zinc.io/v1/search?query=${req.body.keywords}&page=1&retailer=amazon`,
+      `https://api.zinc.io/v1/search?query=${keywords}&page=1&retailer=amazon`,
       { auth: { username: process.env.ZINC_USERNAME } }
     )
     .then(

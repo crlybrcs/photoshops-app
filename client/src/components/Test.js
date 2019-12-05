@@ -46,7 +46,7 @@ class Test extends Component {
               <div key={post.product_id}>
                 <img src={post.image} alt="product pic" />
                 {post.title} --- ${post.price} --- Star Rating: {post.stars} ---
-                Number of Reviews: {post.num_reviews} --- Product Id:
+                Number of Reviews: {post.num_reviews} ---
                 {post.product_id} ---
               </div>
             ))
