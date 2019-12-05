@@ -36,6 +36,12 @@ class Test extends Component {
       });
   };
 
+  // insertDecimal = num => {
+  //   return Number((num / 100).toFixed(2));
+  // };
+
+  // decPrice = insertDecimal(post.price);
+
   render() {
     const { posts, err } = this.state;
     return (
