@@ -14,7 +14,9 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 
 mongoose
-  .connect("mongodb://localhost/photoshops-app", { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/photoshops-app", {
+    useNewUrlParser: true
+  })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -85,5 +87,7 @@ app.use("/auth", authRoutes);
 
 const productRoutes = require("./routes/products");
 app.use("/products", productRoutes);
+const googleApiRoutes = require("./routes/googleApiRoute");
+app.use("/googleApi", googleApiRoutes);
 
 module.exports = app;
