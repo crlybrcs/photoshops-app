@@ -1,33 +1,53 @@
-import React, { Component } from "react";
-import GResource from "./GResource";
+import React, { Component } from 'react';
+import GResource from './GResource';
+import Axios from 'axios';
 
 class GRForms extends Component {
-  //pass array here!!!!
-  state = {
-    recommendations: [1, 2, 3, 4, 5, 6, 6]
-  };
+	//pass array here!!!!
+	// state = {
+	// 	labels: [],
+	// 	textResults: '',
+	// 	webResults: []
+	// };
 
-  getData = () => {};
+	// getData = () => {
+	// 	const { id } = this.props.match.params;
+	// 	console.log('this.props.match.params: ', id);
 
-  // What do we want here?
-  // keywordArray = keywordArray.slice(0, 15);
+	// 	axios.get(`/googleApi/search/${_id}`).then((response) => {
+	//     this.setState({
+	//       labels: response.data.labels,
+	//       textResults: response.data.textResults,
+	//       description: response.data.webResults
+	//     })
+	// 		console.log('RESPONSE IN GRFORMS:', response);
+	//   }).catch(err => {
+	//     console.log(err)
+	//   })
+	// };
 
-  render() {
-    return (
-      <div className="Container">
-        <div className="FormKeyWords">
-          <ul>
-            {this.state.recommendations.map(keyword => {
-              return (
-                <li>
-                  <GResource name="Name" />
-                  {/* <Link to="googleApiRoute/keywords">keyword</Link>
+	// componentDidMount() {
+	//   this.getData();
+	// }
+
+	render() {
+		return (
+			<div className="Container">
+				<div className="FormKeyWords">
+					<ul>
+						{this.state.recommendations.map((keyword) => {
+							return (
+								<ul>
+									<li>
+										<GResource keyword="" />
+										{/* <Link to="googleApiRoute/keywords">keyword</Link>
         <button type="submit">Remove</button> */}
-                </li>
-              );
-            })}
-          </ul>
-          {/* <div>
+									</li>
+								</ul>
+							);
+						})}
+					</ul>
+					{/* <div>
             <div className="wrap">
               <div className="search">
                 <input
@@ -49,10 +69,10 @@ class GRForms extends Component {
             <img src={this.state.googleImage} />
           </div>
           */}
-        </div>
-      </div>
-    );
-  }
+				</div>
+			</div>
+		);
+	}
 }
 
 export default GRForms;

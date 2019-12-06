@@ -1,8 +1,9 @@
 // api/service.js
 import axios from 'axios';
 
+// theFile - passing the 'uploadData' variable to process the url
 const handleUpload = (theFile) => {
-	console.log('file in service: ', theFile);
+	console.log('file in service.js: : ', theFile);
 	return axios.post('/googleApi', theFile).then((response) => response.data).catch((err) => err.response.data);
 };
 const saveNewThing = (newThing) => {
