@@ -87,15 +87,7 @@ app.use('/products', productRoutes);
 const googleApiRoutes = require('./routes/googleApiRoute');
 app.use('/googleApi', googleApiRoutes);
 
-<<<<<<< HEAD
-const productRoutes = require("./routes/products");
-app.use("/products", productRoutes);
-
-const googleApiRoutes = require("./routes/googleApiRoute");
-app.use("/googleApi", googleApiRoutes);
-=======
 const uploadRoutes = require('./routes/file-upload-routes');
 app.use('/api', uploadRoutes);
->>>>>>> 5045baa30bc22c7a72f910eb4ea0773b138877f1
 
 module.exports = app;

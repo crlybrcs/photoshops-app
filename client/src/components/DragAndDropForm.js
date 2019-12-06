@@ -12,9 +12,15 @@ class DragAndDropForm extends Component {
 
 	getData = () => {
 		const { id } = this.props.match.params;
-		console.log(id);
+
+		// returns an objects with history, location, match props
+		console.log('this.props: ', this.props);
+		// targeting id
+		console.log('this.props.match.params: ', id);
+
+		// passing an id to googleApiRoute
 		axios.get(`/googleApi/search/${id}`).then((res) => {
-			console.log(res.data);
+			console.log('axios.get, then(res) -> res.data', res.data);
 			const { imageUrl, labels, textResults, webResults } = res.data;
 			this.setState(
 				{
@@ -25,7 +31,7 @@ class DragAndDropForm extends Component {
 					loading: false
 				},
 				() => {
-					console.log(this.state);
+					console.log('this.state from DRAG AND DROP', this.state);
 				}
 			);
 		});

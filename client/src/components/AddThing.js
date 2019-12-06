@@ -12,20 +12,25 @@ class AddThing extends Component {
 
 	// this method handles just the file upload
 	handleFileUpload = (e) => {
+		// e.target - is <input type="file">
+		// e.target.files gives a list of all files (here -> just one at position 0)
 		console.log('The file to be uploaded is: ', e.target.files[0]);
 
 		const uploadData = new FormData();
+		console.log('printing FormData object: ', uploadData);
+
 		// imageUrl => this name has to be the same as in the model since we pass
 		// req.body to .create() method when creating a new thing in '/api/things/create' POST route
+
 		uploadData.append('imageUrl', e.target.files[0]);
 
 		handleUpload(uploadData)
 			.then(this.setState({ uploadOn: true }))
 			.then((response) => {
-				console.log('response is: ', response);
+				console.log('response in handleUpload is: ', response);
 				// after the console.log we can see that response carries 'secure_url' which we can use to update the state
 				this.setState({ imageUrl: response.secure_url, uploadOn: false }, () =>
-					console.log(this.state.imageUrl)
+					console.log('this.state.imageUrl in handleUpload fc:', this.state.imageUrl)
 				);
 			})
 			.catch((err) => {
@@ -55,7 +60,7 @@ class AddThing extends Component {
 		const imageCheck = (
 			<div>
 				<img src={this.state.imageUrl} style={{ width: '50%' }} />
-				<h1>Is this your final image? MUAHAHAHAHAHAH</h1>
+				<h1>Is this your final image?</h1>
 			</div>
 		);
 		console.log(this.props);

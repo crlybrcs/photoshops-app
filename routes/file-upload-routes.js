@@ -22,7 +22,7 @@ const Product = require('../models/Product');
 router.post('/upload/create', (req, res, next) => {
 	console.log('body: ', req.body);
 	const { name, description, imageUrl } = req.body;
-	console.log('ERRRORRRRRRR');
+	console.log('UPLOAD CREATE:');
 	Product.create({
 		title: name,
 		product_details: description,
