@@ -3,11 +3,8 @@ import "./App.css";
 import Home from "./components/Home";
 
 function App() {
-  return (
-    <div className="App">
-      <Home className="class-home" />
-    </div>
-  );
+  // return <div className="App">{/* <Home className="class-home" /> */}</div>;
+  return <div>Hello</div>;
 }
 
 export default App;
