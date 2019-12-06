@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const axios = require("axios");
 // const picnikeImg = require("../picnike");
 
 // Imports the Google Cloud client library
@@ -62,6 +63,8 @@ router.get("/", (req, res) => {
   const labelsResults = detectLabels().catch(console.error);
   const detectWebResults = detectWeb().catch(console.error);
   const detectTextResults = detectText().catch(console.error);
+
+  console.log(detectTextResults);
 });
 
 module.exports = router;

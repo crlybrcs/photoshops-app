@@ -87,6 +87,7 @@ app.use("/auth", authRoutes);
 
 const productRoutes = require("./routes/products");
 app.use("/products", productRoutes);
+
 const googleApiRoutes = require("./routes/googleApiRoute");
 app.use("/googleApi", googleApiRoutes);
 

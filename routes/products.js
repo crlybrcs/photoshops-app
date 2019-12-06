@@ -7,6 +7,7 @@ router.post("/test", (req, res) => {
   //const keywords = "betty crocker spatula red";
 
   const keywords = req.body.keywords;
+
   console.log(keywords);
   axios
     .get(

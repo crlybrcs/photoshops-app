@@ -11,7 +11,9 @@ class Test extends Component {
 
   componentDidMount = () => {
     console.log("component mounting");
+
     const keywords = this.state.keywords;
+
     axios
       .post("/products/test", { keywords })
       .then(res => {
@@ -44,15 +46,28 @@ class Test extends Component {
 
   render() {
     const { posts, err } = this.state;
+    console.log(posts);
+    const prodName = posts.title && posts.title.split(" ").join("-");
+    const amz = "http://amazon.com";
+
+    //console.log(price);
+    // const cost = ;
+
+    const url = `${amz}/${prodName}/dp/`;
     return (
       <div>
         List of Products
         {posts.length
           ? posts.map(post => (
               <div key={post.product_id}>
-                <img src={post.image} alt="product pic" />
-                {post.title} --- ${post.price} --- Star Rating: {post.stars} ---
-                Number of Reviews: {post.num_reviews} ---
+                <a href={url + post.product_id}>
+                  <div>
+                    <img src={post.image} alt="product pic" />
+                    <h1>{post.title}</h1>
+                  </div>
+                </a>
+                --- ${post.price / 100} --- Star Rating: {post.stars} --- Number
+                of Reviews: {post.num_reviews} ---
                 {post.product_id} ---
               </div>
             ))
