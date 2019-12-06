@@ -1,46 +1,33 @@
 import React, { Component } from "react";
-import axios from "axios";
+import GResource from "./GResource";
 
 class GRForms extends Component {
-  // state = {
-  //   posts: [],
-  //   err: "",
-  //   keywords: ""
-  // };
-
-  // componentDidMount = () => {
-  //   console.log("FORM component mounting");
-  //   const keywords = this.state.keywords;
-  //   axios.post("/googleApiRoute/grforms", { keywords })
-  //   .then(res => {
-  //     console.log(res.data);
-  //   });
-  // };
-
-  // const GRForms = props => {
   //pass array here!!!!
-  /*
-      let keywordArray = array.map(keyword=>{
-        return(
-          <li>
-            <Link to = "googleData/keyword"> 
-            keyword
-            </Link>
-          </li>
-        )
-      })
-      
-      What do we want here?
-      keywordArray = keywordArray.slice(0, 15)
-      */
+  state = {
+    recommendations: [1, 2, 3, 4, 5, 6, 6]
+  };
+
+  getData = () => {};
+
+  // What do we want here?
+  // keywordArray = keywordArray.slice(0, 15);
+
   render() {
     return (
       <div className="Container">
         <div className="FormKeyWords">
-          <ul>{/*
-                  {keywordArray}
-                  */}</ul>
-          <div>
+          <ul>
+            {this.state.recommendations.map(keyword => {
+              return (
+                <li>
+                  <GResource name="Name" />
+                  {/* <Link to="googleApiRoute/keywords">keyword</Link>
+        <button type="submit">Remove</button> */}
+                </li>
+              );
+            })}
+          </ul>
+          {/* <div>
             <div className="wrap">
               <div className="search">
                 <input
@@ -61,11 +48,11 @@ class GRForms extends Component {
           <div className="ImageEl">
             <img src={this.state.googleImage} />
           </div>
+          */}
         </div>
       </div>
     );
   }
-  // };
 }
 
 export default GRForms;
