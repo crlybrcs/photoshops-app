@@ -73,7 +73,10 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
+<<<<<<< HEAD
     useUnifiedTopology: true,
+=======
+>>>>>>> 14e065a93f806de6316fe89e457e91b854540858
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
