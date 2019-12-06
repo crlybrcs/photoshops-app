@@ -36,12 +36,12 @@ class Login extends Component {
   };
   //Functions here
   render() {
+    //Everything that the browser sees
     return (
       <div>
         <h2>Login Here</h2>
       </div>
     );
-    //Everything that the browser sees
   }
 }
 
