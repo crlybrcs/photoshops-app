@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GResource from "./GResource";
 import axios from "axios";
+import Test from "../components/Test";
 
 class GRForms extends Component {
   //pass array here!!!!
@@ -35,16 +36,49 @@ class GRForms extends Component {
     this.getData();
   }
 
+  // deleteListItem = () => {
+  //   const id = this.state.project._id;
+  //   axios
+  //     .delete(`/api/projects/${id}`)
+  //     .then(response => {
+  //       // redirect to '/projects'
+  //       console.log(this.props.history);
+  //       this.props.history.push("/projects"); // `/projects` is our client side route
+  //       // this.props.history comes from react-router-dom <Route>
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    //   if (this.state.uploadOn) return; // do nothing if the file is still being uploaded
+
+    //   saveNewThing(this.state)
+    //     .then(res => {
+    //       console.log("added: ", res);
+    //       // here you would redirect to some other page
+    //       console.log("doneee");
+    //       this.props.history.push(`/search/${res._id}`);
+    //     })
+    //     .catch(err => {
+    //       console.log("Error while adding the thing: ", err);
+    //     });
+  };
+
   render() {
     const { labels, textResults, webResults, imageUrl } = this.state;
     let fullMerge = labels.concat(webResults);
 
-    let strArr;
+    let str;
     if (textResults) {
-      strArr = textResults;
+      str = textResults;
     } else {
-      strArr = "";
+      str = "";
     }
+    let strArr = str.split(" ");
 
     let array = [];
     for (var key in fullMerge) {
@@ -53,28 +87,48 @@ class GRForms extends Component {
     }
     let finalArr = [...array, ...strArr];
 
-    console.log(finalArr);
+    function uniqBy(a, key) {
+      var seen = {};
+      return a.filter(function(item) {
+        var k = key(item);
+        return seen.hasOwnProperty(k) ? false : (seen[k] = true);
+      });
+    }
+
+    let newArr = uniqBy(finalArr, JSON.stringify).filter(keyword => {
+      return keyword !== "";
+    });
+    console.log(newArr);
 
     return (
       <div className="Container">
         <div className="FormKeyWords">
-          <ul>
-            {finalArr.map((keyword, index) => {
-              return (
+          <form onSubmit={e => this.handleSubmit(e)}>
+            {this.state.imageUrl && (
+              <React.Fragment>
                 <ul>
-                  <li key={index}>
-                    {Object.values(keyword)}
-                    {/* <GResource keyword="" /> */}
-                    {/* <Link to="googleApiRoute/keywords">keyword</Link>
+                  {newArr.map((keyword, index) => {
+                    return (
+                      <li key={index}>
+                        {Object.values(keyword)}
+                        {/* <GResource keyword="" /> */}
+                        {/* <Link to="googleApiRoute/keywords">keyword</Link>
                     <button type="submit">Remove</button> */}
-                  </li>
+                      </li>
+                    );
+                  })}
                 </ul>
-              );
-            })}
-          </ul>
-          <img src={imageUrl} alt="your product" />
-          {/* <div>
-            <div className="wrap">
+                <img
+                  src={imageUrl}
+                  alt="your product"
+                  style={{ height: "200px" }}
+                />
+                <button type="submit">Search Amazon</button>
+              </React.Fragment>
+            )}
+          </form>
+          <div>
+            {/* <div className="wrap">
               <div className="search">
                 <input
                   type="text"
@@ -87,15 +141,16 @@ class GRForms extends Component {
                 </input>
                 <button>ADD</button>
               </div>
-            </div>
-            <div className="InputAdd">input/add</div>
-            <div className="KWsearch">Search button</div>
+            </div> */}
+            {/* <div className="InputAdd">input/add</div> */}
           </div>
-          <div className="ImageEl">
+          {/* <div className="ImageEl">
             <img src={this.state.googleImage} />
-          </div>
-          */}
+          </div> */}
         </div>
+      </div>
+      <div>
+        <Test data = {this.newArr}/>
       </div>
     );
   }

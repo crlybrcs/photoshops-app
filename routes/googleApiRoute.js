@@ -39,7 +39,7 @@ router.get("/search/:id", async (req, res) => {
       if (labels.length) {
         //console.log("LABELS: ", labels.splice(0, 5));
         resultLabels = labels.splice(0, 5).map(item => {
-          return { description: item.description };
+          return `${item.description}`;
         });
         console.log("NEW LABELS:", resultLabels);
         return resultLabels;
@@ -55,7 +55,7 @@ router.get("/search/:id", async (req, res) => {
       if (webDetection.webEntities.length) {
         // console.log(`Web entities found: ${webDetection.webEntities.length}`);
         resultWebEntities = webDetection.webEntities.splice(0, 5).map(item => {
-          return { description: item.description };
+          return `${item.description}`;
         });
         console.log("NEW WEB ENT: ", resultWebEntities);
         // console.log(`  Description: ${webEntity.description}`);
