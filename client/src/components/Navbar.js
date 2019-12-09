@@ -13,6 +13,7 @@ export default class Navbar extends Component {
             <NavLink className= "d-inline p-2 bg-dark text-white" to="/">Home</NavLink>
             <NavLink className= "d-inline p-2 bg-dark text-white" to="/Login">Log In</NavLink>
             <NavLink className= "d-inline p-2 bg-dark text-white" to="/Signup">Sign Up</NavLink>
+            <NavLink className= "d-inline p-2 bg-dark text-white" to="/About">About Us</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

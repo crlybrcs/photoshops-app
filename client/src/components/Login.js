@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
-// import { Alert, Form, Button } from "react-bootstrap";
-
+import { Alert, Form, Button } from "react-bootstrap";
+import { login } from "../components/services/auth";
 class Login extends Component {
   //Everything here
   state = {
@@ -39,7 +38,33 @@ class Login extends Component {
     //Everything that the browser sees
     return (
       <div>
-        <h2>Login Here</h2>
+        <h2>Login</h2>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Label htmlFor="username">Username: </Form.Label>
+            <Form.Control
+              type="text"
+              name="username"
+              id="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="password">Password: </Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              id="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          {this.state.error && (
+            <Alert variant="danger">{this.state.error}</Alert>
+          )}
+          <Button type="submit">Log in</Button>
+        </Form>
       </div>
     );
   }
