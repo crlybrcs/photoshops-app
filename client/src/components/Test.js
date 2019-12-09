@@ -6,7 +6,7 @@ class Test extends Component {
   state = {
     posts: [],
     err: "",
-    keywords: "under armour black shoes"
+    keywords: this.props.data
   };
 
   componentDidMount = () => {
