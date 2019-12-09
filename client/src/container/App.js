@@ -21,7 +21,7 @@ function App() {
       {/* <Home className="class-home" /> */}
       {/* <Navbar/> */}
 
-      <Navbar />
+      {/* <Navbar /> */}
       <Switch>
         <Route
           exact
