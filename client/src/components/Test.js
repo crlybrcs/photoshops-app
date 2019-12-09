@@ -16,6 +16,7 @@ class Test extends Component {
     axios
       .post("/products/test", { keywords })
       .then(res => {
+        console.log(res.data);
         const posts = res.data.results.map(el => {
           const newObj = {};
           newObj.title = el.title;
@@ -27,6 +28,7 @@ class Test extends Component {
           return newObj;
         });
         this.setState({ posts: posts });
+        console.log(posts);
       })
       .catch(function(err) {
         console.log(err);

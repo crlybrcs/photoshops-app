@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GResource from "./GResource";
+// import GResource from "./GResource";
 import axios from "axios";
 import Test from "../components/Test";
 
@@ -11,6 +11,7 @@ class GRForms extends Component {
     webResults: [],
     imageUrl: "",
     cleanData: [],
+    newKeyword: "",
     submit: false
   };
 
@@ -70,22 +71,35 @@ class GRForms extends Component {
     this.setState({ cleanData: newArr }, () => console.log(newArr));
   };
 
-  // searchAmazon = () => {
-  // const { labels, textResults, webResults } = this.state;
-
-  //   this.setState({ newArr: this.newArr });
-  // };
-
   handleSubmit = e => {
     e.preventDefault();
 
     this.setState({ submit: true });
+    console.log(this.cleaData);
+  };
+
+  triggerDelete = (keyword, index) => {
+    let cleanData = [...this.state.cleanData];
+    cleanData.splice(index, 1);
+    this.setState({ cleanData: cleanData });
+  };
+
+  handleChange = event => {
+    this.setState({
+      newKeyword: event.target.value
+    });
+  };
+
+  triggerAdd = event => {
+    this.setState(prevState => ({
+      cleanData: [...prevState.cleanData, `${this.state.newKeyword}`],
+      newKeyword: ""
+    }));
+    // this.inputTitle.value = "";
   };
 
   componentDidMount() {
     this.getData();
-
-    // this.searchAmazon();
   }
 
   render() {
@@ -96,25 +110,44 @@ class GRForms extends Component {
         <div className="Container">
           <div className="FormKeyWords">
             <form onSubmit={this.handleSubmit}>
-              {this.state.imageUrl && (
+              {imageUrl && (
                 <React.Fragment>
                   <ul>
                     {this.state.cleanData.map((keyword, index) => {
                       return (
-                        <li key={index}>
-                          {Object.values(keyword)}
-                          {/* <GResource keyword="" /> */}
-                          {/* <Link to="googleApiRoute/keywords">keyword</Link>
-                    <button type="submit">Remove</button> */}
-                        </li>
+                        <>
+                          <li key={index}>
+                            {Object.values(keyword)}
+                            <button
+                              variant="danger"
+                              onClick={e => {
+                                e.preventDefault();
+                                this.triggerDelete(keyword, index);
+                              }}
+                            >
+                              <span>❌</span>
+                            </button>
+                          </li>
+                        </>
                       );
                     })}
                   </ul>
-                  <img
-                    src={imageUrl}
-                    alt="your product"
-                    style={{ height: "200px" }}
-                  />
+                  <input
+                    type="text"
+                    name="newKeyword"
+                    id="newKeyword"
+                    value={this.state.newKeyword}
+                    onChange={this.handleChange}
+                  ></input>
+                  <button
+                    onClick={e => {
+                      e.preventDefault();
+                      this.triggerAdd(cleanData);
+                    }}
+                    // ref={el => (this.inputTitle.value = el)}
+                  >
+                    ADD
+                  </button>
                   <button type="submit">Search Amazon</button>
                 </React.Fragment>
               )}
