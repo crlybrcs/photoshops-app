@@ -28,27 +28,28 @@ class App extends React.Component {
         {/* <Navbar/> */}
 
         {/* <Navbar /> */}
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => <AddThing {...props} className="class-home" />}
-          />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+        {/* <Switch> */}
+        <Route
+          exact
+          path="/"
+          render={props => <AddThing {...props} className="class-home" />}
+        />
+        {/* <Route path="/Login" component={Login} />
+        <Route path="/SignUp" component={Signup} /> */}
 
-          <Route
-            exact
-            path="/search/:id"
-            render={props => <DragAndDropForm {...props} />}
-          />
+        <Route
+          exact
+          path="/search/:id"
+          render={props => <DragAndDropForm {...props} />}
+        />
 
-          <Route
-            exact
-            path="/search/:id"
-            render={props => <GRForms {...props} />}
-          />
-        </Switch>
+        <Route
+          exact
+          path="/search/:id"
+          render={props => <GRForms {...props} />}
+        />
+        {/* </Switch> */}
+
         {/* <Route exact path="/search/:id" render={props => <Test {...props} />} /> */}
       </div>
     );
