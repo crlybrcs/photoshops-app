@@ -16,7 +16,7 @@ class Test extends Component {
     axios
       .post("/products/test", { keywords })
       .then(res => {
-        console.log(res.data);
+        console.log(res);
         const posts = res.data.results.map(el => {
           const newObj = {};
           newObj.title = el.title;
