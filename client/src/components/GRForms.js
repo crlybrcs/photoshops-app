@@ -9,7 +9,9 @@ class GRForms extends Component {
     labels: [],
     textResults: "",
     webResults: [],
-    imageUrl: ""
+    imageUrl: "",
+    cleanData: [],
+    submit: false
   };
 
   getData = () => {
@@ -19,12 +21,16 @@ class GRForms extends Component {
     axios
       .get(`/googleApi/search/${id}`)
       .then(response => {
-        this.setState({
-          labels: response.data.labels,
-          textResults: response.data.textResults,
-          webResults: response.data.webResults,
-          imageUrl: response.data.imageUrl
-        });
+        this.setState(
+          {
+            labels: response.data.labels,
+            textResults: response.data.textResults,
+            webResults: response.data.webResults,
+            imageUrl: response.data.imageUrl
+          },
+          () => this.cleaData()
+        );
+
         console.log("RESPONSE IN GRFORMS:", response);
       })
       .catch(err => {
@@ -32,44 +38,9 @@ class GRForms extends Component {
       });
   };
 
-  componentDidMount() {
-    this.getData();
-  }
+  cleaData = () => {
+    const { labels, textResults, webResults } = this.state;
 
-  // deleteListItem = () => {
-  //   const id = this.state.project._id;
-  //   axios
-  //     .delete(`/api/projects/${id}`)
-  //     .then(response => {
-  //       // redirect to '/projects'
-  //       console.log(this.props.history);
-  //       this.props.history.push("/projects"); // `/projects` is our client side route
-  //       // this.props.history comes from react-router-dom <Route>
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
-
-  handleSubmit = e => {
-    e.preventDefault();
-
-    //   if (this.state.uploadOn) return; // do nothing if the file is still being uploaded
-
-    //   saveNewThing(this.state)
-    //     .then(res => {
-    //       console.log("added: ", res);
-    //       // here you would redirect to some other page
-    //       console.log("doneee");
-    //       this.props.history.push(`/search/${res._id}`);
-    //     })
-    //     .catch(err => {
-    //       console.log("Error while adding the thing: ", err);
-    //     });
-  };
-
-  render() {
-    const { labels, textResults, webResults, imageUrl } = this.state;
     let fullMerge = labels.concat(webResults);
 
     let str;
@@ -98,37 +69,64 @@ class GRForms extends Component {
     let newArr = uniqBy(finalArr, JSON.stringify).filter(keyword => {
       return keyword !== "";
     });
-    console.log(newArr);
 
-    return (
-      <div className="Container">
-        <div className="FormKeyWords">
-          <form onSubmit={e => this.handleSubmit(e)}>
-            {this.state.imageUrl && (
-              <React.Fragment>
-                <ul>
-                  {newArr.map((keyword, index) => {
-                    return (
-                      <li key={index}>
-                        {Object.values(keyword)}
-                        {/* <GResource keyword="" /> */}
-                        {/* <Link to="googleApiRoute/keywords">keyword</Link>
+    this.setState({ cleanData: newArr }, () =>
+      console.log("/////////////", newArr)
+    );
+    console.log(newArr);
+  };
+
+  // searchAmazon = () => {
+  // const { labels, textResults, webResults } = this.state;
+
+  //   this.setState({ newArr: this.newArr });
+  // };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    this.setState({ submit: true });
+  };
+
+  componentDidMount() {
+    this.getData();
+
+    // this.searchAmazon();
+  }
+
+  render() {
+    const { imageUrl, cleanData, submit } = this.state;
+
+    {
+      return !submit ? (
+        <div className="Container">
+          <div className="FormKeyWords">
+            <form onSubmit={this.handleSubmit}>
+              {this.state.imageUrl && (
+                <React.Fragment>
+                  <ul>
+                    {this.state.cleanData.map((keyword, index) => {
+                      return (
+                        <li key={index}>
+                          {Object.values(keyword)}
+                          {/* <GResource keyword="" /> */}
+                          {/* <Link to="googleApiRoute/keywords">keyword</Link>
                     <button type="submit">Remove</button> */}
-                      </li>
-                    );
-                  })}
-                </ul>
-                <img
-                  src={imageUrl}
-                  alt="your product"
-                  style={{ height: "200px" }}
-                />
-                <button type="submit">Search Amazon</button>
-              </React.Fragment>
-            )}
-          </form>
-          <div>
-            {/* <div className="wrap">
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <img
+                    src={imageUrl}
+                    alt="your product"
+                    style={{ height: "200px" }}
+                  />
+                  <button type="submit">Search Amazon</button>
+                </React.Fragment>
+              )}
+            </form>
+            <div>
+              {/* <div className="wrap">
               <div className="search">
                 <input
                   type="text"
@@ -142,17 +140,19 @@ class GRForms extends Component {
                 <button>ADD</button>
               </div>
             </div> */}
-            {/* <div className="InputAdd">input/add</div> */}
-          </div>
-          {/* <div className="ImageEl">
+              {/* <div className="InputAdd">input/add</div> */}
+            </div>
+            {/* <div className="ImageEl">
             <img src={this.state.googleImage} />
           </div> */}
+          </div>
         </div>
-      </div>
-      <div>
-        <Test data = {this.newArr}/>
-      </div>
-    );
+      ) : (
+        <div>
+          <Test data={cleanData} />
+        </div>
+      );
+    }
   }
 }
 
