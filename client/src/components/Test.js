@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import { keywords } from "/routes/products.js";
 
 class Test extends Component {
   state = {
@@ -17,7 +16,6 @@ class Test extends Component {
     axios
       .post("/products/test", { keywords })
       .then(res => {
-        console.log("test", res.data.results);
         const posts = res.data.results.map(el => {
           const newObj = {};
           newObj.title = el.title;
@@ -29,29 +27,17 @@ class Test extends Component {
           return newObj;
         });
         this.setState({ posts: posts });
-        console.log(posts);
-        // console.log(res.data.results[0].image);
-        // this.setState({ keywords: "betty crocker spatula red" });
       })
       .catch(function(err) {
         console.log(err);
       });
   };
 
-  // insertDecimal = num => {
-  //   return Number((num / 100).toFixed(2));
-  // };
-
-  // decPrice = insertDecimal(post.price);
-
   render() {
     const { posts, err } = this.state;
-    console.log(posts);
+
     const prodName = posts.title && posts.title.split(" ").join("-");
     const amz = "http://amazon.com";
-
-    //console.log(price);
-    // const cost = ;
 
     const url = `${amz}/${prodName}/dp/`;
     return (
