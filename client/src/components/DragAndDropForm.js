@@ -13,11 +13,6 @@ class DragAndDropForm extends Component {
   getData = () => {
     const { id } = this.props.match.params;
 
-    // returns an objects with history, location, match props
-    console.log("this.props: ", this.props);
-    // targeting id
-    console.log("this.props.match.params: ", id);
-
     // passing an id to googleApiRoute
     axios.get(`/googleApi/search/${id}`).then(res => {
       console.log("axios.get, then(res) -> res.data", res.data);

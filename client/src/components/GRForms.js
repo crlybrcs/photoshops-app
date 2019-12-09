@@ -16,7 +16,6 @@ class GRForms extends Component {
 
   getData = () => {
     const { id } = this.props.match.params;
-    console.log("this.props.match.params: ", id);
 
     axios
       .get(`/googleApi/search/${id}`)
@@ -30,8 +29,6 @@ class GRForms extends Component {
           },
           () => this.cleaData()
         );
-
-        console.log("RESPONSE IN GRFORMS:", response);
       })
       .catch(err => {
         console.log(err);
@@ -70,10 +67,7 @@ class GRForms extends Component {
       return keyword !== "";
     });
 
-    this.setState({ cleanData: newArr }, () =>
-      console.log("/////////////", newArr)
-    );
-    console.log(newArr);
+    this.setState({ cleanData: newArr }, () => console.log(newArr));
   };
 
   // searchAmazon = () => {
