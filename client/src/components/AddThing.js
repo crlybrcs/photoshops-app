@@ -65,7 +65,7 @@ class AddThing extends Component {
 				<h2 className="header-upload">Upload your picture</h2>
 
 				<form onSubmit={(e) => this.handleSubmit(e)}>
-					<div class="col-lg col-sm col-12">
+					<div className="col-lg col-sm col-12">
 						<label className="btn btn-file btn-dark">
 							Browse
 							<input className="input-field" type="file" onChange={(e) => this.handleFileUpload(e)} />
