@@ -26,9 +26,8 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				{/* <Home className="class-home" /> */}
-				{/* <Navbar/> */}
+				<Navbar />
 
-				{/* <Navbar /> */}
 				{/* <Switch> */}
 				<Route exact path="/" render={(props) => <AddThing {...props} className="class-home" />} />
 				{/* <Route path="/Login" component={Login} />
