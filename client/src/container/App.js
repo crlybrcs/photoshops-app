@@ -4,7 +4,7 @@ import "./App.css";
 import { Route } from "react-router-dom";
 import DragAndDropForm from "../components/DragAndDropForm";
 import AddThing from "../components/AddThing";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 import { Switch } from "react-router-dom";
 // import { NavLink } from "react-bootstrap";
 // import Home from "../components/Home";
@@ -22,7 +22,7 @@ function App() {
       {/* <Navbar/> */}
 
       <Navbar />
-      <Switch>
+      {/* <Switch> */}
         <Route
           exact
           path="/"
@@ -42,7 +42,7 @@ function App() {
           path="/search/:id"
           render={props => <GRForms {...props} />}
         />
-      </Switch>
+      {/* </Switch> */}
 
       {/* <Route exact path="/search/:id" render={props => <Test {...props} />} /> */}
     </div>
