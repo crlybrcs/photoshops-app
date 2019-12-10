@@ -28,7 +28,6 @@ class App extends React.Component {
         {/* <Home className="class-home" /> */}
         <Navbar />
 
-        {/* <Navbar /> */}
         {/* <Switch> */}
         <Route
           exact
