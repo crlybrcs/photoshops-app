@@ -1,24 +1,28 @@
 import React, { Component } from "react";
 import { signup } from "./services/auth";
-import { Alert, Form, Button } from "react-bootstrap";
+// import { Alert, Form, Button } from "react-bootstrap";
 
 class Signup extends Component {
   //Everything here
   state = {
     username: "",
     password: "",
+    email: "",
     error: ""
   };
 
   handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+    this.setState(
+      {
+        [event.target.name]: event.target.value
+      },
+      () => console.log(this.state)
+    );
   };
 
   handleSubmit = event => {
-    // event.preventDefault(event);
-console.log(event);
+    event.preventDefault();
+    console.log(this.state.username, this.state.password);
     signup(this.state.username, this.state.password).then(data => {
       if (data.message) {
         // handle errors
@@ -40,12 +44,14 @@ console.log(event);
     //Everything that shows on browser here
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <h3>Sign Up</h3>
 
           <div className="form-group">
-            <label>First name</label>
+            <label>Name</label>
             <input
+              onChange={this.handleChange}
+              name="username"
               type="text"
               className="form-control"
               placeholder="First name"
@@ -53,17 +59,20 @@ console.log(event);
           </div>
 
           <div className="form-group">
-            <label>Last name</label>
+            <label>username</label>
             <input
+              onChange={this.handleChange}
               type="text"
               className="form-control"
-              placeholder="Last name"
+              placeholder="username"
             />
           </div>
 
           <div className="form-group">
             <label>Email address</label>
             <input
+              name="email"
+              onChange={this.handleChange}
               type="email"
               className="form-control"
               placeholder="Enter email"
@@ -72,14 +81,16 @@ console.log(event);
 
           <div className="form-group">
             <label
-              onChange={e => {
-                e.preventDefault();
-                this.handleChange();
-              }}
+            // onChange={e => {
+            //   e.preventDefault();
+            //   this.handleChange();
+            // }}
             >
               Password
             </label>
             <input
+              name="password"
+              onChange={this.handleChange}
               type="password"
               className="form-control"
               placeholder="Enter password"
@@ -88,16 +99,16 @@ console.log(event);
 
           <button
             type="submit"
-            onClick={e => {
-              e.preventDefault();
-              this.handleSubmit(this.state.username, this.state.password);
-            }}
+            // onClick={e => {
+            //   e.preventDefault();
+            //   this.handleSubmit(this.state.username, this.state.password);
+            // }}
             className="btn btn-primary btn-block"
           >
             Sign Up
           </button>
           <p className="forgot-password text-right">
-            Already registered <a href="#">sign in?</a>
+            Already registered <a href="/Login">sign in?</a>
           </p>
         </form>
       </div>
