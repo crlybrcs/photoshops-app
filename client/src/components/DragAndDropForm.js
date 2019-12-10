@@ -14,7 +14,7 @@ class DragAndDropForm extends Component {
 		const { id } = this.props.match.params;
 
 		// passing an id to googleApiRoute
-		axios.get(`${process.env.REACT_APP_API_URL}/googleApi/search/${id}`, { withCredentials: true }).then((res) => {
+		axios.get(`/googleApi/search/${id}`, { withCredentials: true }).then((res) => {
 			console.log('axios.get, then(res) -> res.data', res.data);
 			const { imageUrl, labels, textResults, webResults } = res.data;
 			this.setState(
