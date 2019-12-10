@@ -4,9 +4,9 @@ import axios from "axios";
 class Test extends Component {
   state = {
     posts: [],
-    err: "Error",
     keywords: this.props.data,
-    uploadOn: false
+    uploadOn: false,
+    err: ""
   };
 
   componentDidMount = () => {
@@ -30,8 +30,19 @@ class Test extends Component {
             return newObj;
           })
           .flat();
-        this.setState({ posts: posts, uploadOn: false });
-        console.log(posts);
+        console.log("LOOOOOK", posts.length);
+        if (posts.length) {
+          this.setState({ posts: posts, uploadOn: false });
+        } else {
+          this.setState({
+            posts: posts,
+            uploadOn: false,
+            err: "Please narrow your search terms and rty again"
+          });
+        }
+        // if (!posts.length) {
+        //   this.setState({ err: "Error" });
+        // }
       })
       .catch(function(err) {
         console.log(err);
@@ -121,22 +132,24 @@ class Test extends Component {
           Sort by Number of Reviews
         </button>
         {this.state.uploadOn && <h3>Loading...</h3>}
-        {posts.length
-          ? posts.map(post => (
-              <div key={post.product_id}>
-                <a href={url + post.product_id} target="_blank">
-                  <div>
-                    <img src={post.image} alt="product pic" />
-                    <h1>{post.title}</h1>
-                  </div>
-                </a>
-                --- ${Number(post.price / 100).toFixed(2)} --- Star Rating:{" "}
-                {post.stars} --- Number of Reviews: {post.num_reviews} ---
-                {post.product_id} ---
-              </div>
-            ))
-          : null}
-        {err ? <h3>Loading....</h3> : null}
+        {posts.length ? (
+          posts.map(post => (
+            <div key={post.product_id}>
+              <a href={url + post.product_id} target="_blank">
+                <div>
+                  <img src={post.image} alt="product pic" />
+                  <h1>{post.title}</h1>
+                </div>
+              </a>
+              --- ${Number(post.price / 100).toFixed(2)} --- Star Rating:{" "}
+              {post.stars} --- Number of Reviews: {post.num_reviews} ---
+              {post.product_id} ---
+            </div>
+          ))
+        ) : (
+          <div>Hello</div>
+        )}
+        {!err ? <h3>Loading....</h3> : <>{err}</>}
       </div>
     );
   }
