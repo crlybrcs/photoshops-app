@@ -78,7 +78,7 @@ class GRForms extends Component {
     console.log(this.cleaData);
   };
 
-  triggerDelete = (keyword, index) => {
+  handleDelete = (keyword, index) => {
     let cleanData = [...this.state.cleanData];
     cleanData.splice(index, 1);
     this.setState({ cleanData: cleanData });
@@ -90,12 +90,11 @@ class GRForms extends Component {
     });
   };
 
-  triggerAdd = event => {
+  handleAdd = event => {
     this.setState(prevState => ({
       cleanData: [...prevState.cleanData, `${this.state.newKeyword}`],
       newKeyword: ""
     }));
-    // this.inputTitle.value = "";
   };
 
   componentDidMount() {
@@ -122,7 +121,7 @@ class GRForms extends Component {
                               variant="danger"
                               onClick={e => {
                                 e.preventDefault();
-                                this.triggerDelete(keyword, index);
+                                this.handleDelete(keyword, index);
                               }}
                             >
                               <span>❌</span>
@@ -142,9 +141,8 @@ class GRForms extends Component {
                   <button
                     onClick={e => {
                       e.preventDefault();
-                      this.triggerAdd(cleanData);
+                      this.handleAdd(cleanData);
                     }}
-                    // ref={el => (this.inputTitle.value = el)}
                   >
                     ADD
                   </button>

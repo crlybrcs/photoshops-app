@@ -1,54 +1,54 @@
 .App {
-	text-align: center;
+  text-align: center;
 }
 
 .App-logo {
-	height: 40vmin;
+  height: 40vmin;
 }
 
 .App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-link {
-	color: #09d3ac;
+  color: #09d3ac;
 }
 
 .container {
-	background-image: url("../images/background-img.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
+  background-image: url("../images/background-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .pr-2 {
-	text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 @media only screen and (max-width: 640px) {
-	.navbar-nav {
-		display: inline-block;
-	}
+  .navbar-nav {
+    display: inline-block;
+  }
 }
 
 .header-upload {
-	margin-top: 80px;
-	margin-bottom: 30px;
+  margin-top: 80px;
+  margin-bottom: 30px;
 }
 
 .navbar {
-	height: 60px;
+  height: 60px;
 }
 
 input {
-	text-align: center;
+  text-align: center;
 }
 
 /* .form-container {
@@ -60,26 +60,31 @@ input {
 } */
 
 .btn-file {
-	position: relative;
-	overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 input {
-	margin: 0 auto;
-	max-width: 100%;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
-.btn-file input[type=file] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	min-width: 100%;
-	min-height: 100%;
-	font-size: 100px;
-	text-align: center;
-	opacity: 0;
-	outline: none;
-	background: white;
-	cursor: inherit;
-	display: block;
+.btn-file input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: center;
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.test-page-container {
+  position: relative;
+  top: 100px;
 }
