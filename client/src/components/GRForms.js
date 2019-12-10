@@ -20,9 +20,10 @@ class GRForms extends Component {
     const { id } = this.props.match.params;
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/googleApi/search/${id}`, {
-        withCredentials: true
-      })
+      .get(
+        `/googleApi/search/${id}`
+        // .get(`${process.env.REACT_APP_API_URL}/googleApi/search/${id}`, {
+      )
       .then(response => {
         this.setState(
           {
