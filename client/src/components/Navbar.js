@@ -18,7 +18,7 @@ export default class Navbar extends Component {
 						<NavLink className="nav-item nav-link active pr-2" to="/Login">
 							Login
 						</NavLink>
-						<NavLink className="nav-item nav-link active pr-2" to="/about">
+						<NavLink className="nav-item nav-link active pr-2" to="/About">
 							About
 						</NavLink>
 					</Nav>
