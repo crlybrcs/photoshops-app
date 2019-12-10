@@ -25,18 +25,16 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				{/* <Home className="class-home" /> */}
-				<Navbar />
+				<Navbar user={this.state.user} />
 
 				{/* <Switch> */}
 				<Route exact path="/" render={(props) => <AddThing {...props} className="class-home" />} />
-				{/* <Route path="/Login" component={Login} />
-        <Route path="/SignUp" component={Signup} /> */}
-
 				<Route exact path="/search/:id" render={(props) => <DragAndDropForm {...props} />} />
-
 				<Route exact path="/search/:id" render={(props) => <GRForms {...props} />} />
 				{/* </Switch> */}
+
+				<Route path="/signup" render={(props) => <Signup {...props} setUser={this.setUser} />} />
+				<Route path="/login" render={(props) => <Login {...props} setUser={this.setUser} />} />
 
 				{/* <Route exact path="/search/:id" render={props => <Test {...props} />} /> */}
 			</div>

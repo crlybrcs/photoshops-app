@@ -70,6 +70,9 @@ app.use(
 	})
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Google OAuth
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;

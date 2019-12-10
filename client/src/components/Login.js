@@ -29,7 +29,7 @@ class Login extends Component {
 				// lift the data up to the App state
 				this.props.setUser(data);
 				// redirect to "/projects"
-				this.props.history.push('/projects');
+				this.props.history.push('/');
 			}
 		});
 	};
@@ -37,11 +37,13 @@ class Login extends Component {
 	render() {
 		//Everything that the browser sees
 		return (
-			<div>
-				<h2>Login</h2>
+			<div className="container-fluid">
+				<h2 className="header-login">Login</h2>
 				<Form onSubmit={this.handleSubmit}>
 					<Form.Group>
-						<Form.Label htmlFor="username">Username: </Form.Label>
+						<Form.Label className="username-label" htmlFor="username">
+							Username:{' '}
+						</Form.Label>
 						<Form.Control
 							type="text"
 							name="username"
@@ -61,7 +63,10 @@ class Login extends Component {
 						/>
 					</Form.Group>
 					{this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
-					<Button type="submit">Log in</Button>
+
+					<Button className="btn btn-dark btn-block " type="submit">
+						Log in
+					</Button>
 				</Form>
 			</div>
 		);

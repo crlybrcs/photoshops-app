@@ -39,7 +39,7 @@
 }
 
 .header-upload {
-	margin-top: 80px;
+	margin: 150px auto;
 	margin-bottom: 30px;
 }
 
@@ -82,4 +82,34 @@ input {
 	background: white;
 	cursor: inherit;
 	display: block;
+}
+
+form {
+	width: 300px;
+	margin: 0 auto;
+}
+
+p .forgot-passport {
+	text-align: center;
+}
+
+.form-main {
+	margin-top: 80px;
+}
+
+.form-main h2 {
+	margin-bottom: 20px;
+}
+
+.header-login {
+	margin-top: 80px;
+	margin-bottom: 20px;
+}
+
+.form-group {
+	margin: 10px;
+}
+
+button .btn {
+	padding-top: 20px;
 }
