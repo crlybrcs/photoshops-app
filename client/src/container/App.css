@@ -21,7 +21,7 @@
 	color: #09d3ac;
 }
 
-.container {
+.container-main {
 	background-image: url("../images/background-img.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -124,6 +124,14 @@ p .forgot-passport {
 	margin: 10px;
 }
 
-button .btn {
+button .btn-dark {
+	margin: 10px 0;
 	padding-top: 20px;
+}
+
+#googleButton {
+	margin: auto;
+	margin-top: 10px;
+	height: 24px;
+	width: auto;
 }

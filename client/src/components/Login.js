@@ -30,26 +30,25 @@ class Login extends Component {
 				// no error
 				// lift the data up to the App state
 				this.props.setUser(data);
-				// redirect to "/projects"
+				// redirect to "/"
 				this.props.history.push('/');
 			}
 		});
 	};
 
-	googleLogin = (response) => {};
-
 	//Functions here
 	render() {
 		//Everything that the browser sees
 		return (
-			<div className="container-fluid">
+			<div class="container">
 				<h2 className="header-login">Login</h2>
 				<Form onSubmit={this.handleSubmit}>
 					<Form.Group>
 						<Form.Label className="username-label" htmlFor="username">
-							Username:{' '}
+							Username:
 						</Form.Label>
 						<Form.Control
+							className="form-control"
 							type="text"
 							name="username"
 							id="username"
@@ -60,6 +59,7 @@ class Login extends Component {
 					<Form.Group>
 						<Form.Label htmlFor="password">Password: </Form.Label>
 						<Form.Control
+							className="form-control"
 							type="password"
 							name="password"
 							id="password"
@@ -68,6 +68,10 @@ class Login extends Component {
 						/>
 					</Form.Group>
 					{this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
+
+					<p className="forgot-password mt-2 text-center">
+						Don't have an account yet? <a href="/signup">Signup</a>
+					</p>
 
 					<Button className="btn btn-dark btn-block " type="submit">
 						Log in
