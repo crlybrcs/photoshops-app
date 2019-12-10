@@ -80,7 +80,7 @@ app.use(passport.session());
 
 // Google OAuth
 
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require("passport-google-oauth2").Strategy;
 
 passport.use(
   new GoogleStrategy(
@@ -114,8 +114,11 @@ passport.use(
 app.use(flash());
 require("./passport")(app);
 
-const authRoutes = require("./routes/auth");
-app.use("/api/auth", authRoutes);
+// const authRoutes = require("./routes/auth");
+// app.use("/auth", authRoutes);
+
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 
 const googleApiRoutes = require("./routes/googleApiRoute");
 app.use("/googleApi", googleApiRoutes);
