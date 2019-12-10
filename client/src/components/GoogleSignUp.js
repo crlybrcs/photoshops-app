@@ -10,7 +10,7 @@ const GoogleSignUp = (props) => {
 ReactDOM.render(
 	<div>
 		<input type="text" placeholder="username" />
-		<GoogleLogin buttonText="Login With Google" />, doc
+		<GoogleLogin buttonText="Login With Google" />
 	</div>
 );
 
