@@ -88,3 +88,12 @@ input {
   position: relative;
   top: 100px;
 }
+
+.Container {
+  position: relative;
+  top: 100px;
+}
+
+.delete-button {
+  padding: 5px;
+}

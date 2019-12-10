@@ -4,8 +4,9 @@ import axios from "axios";
 class Test extends Component {
   state = {
     posts: [],
-    err: "",
-    keywords: this.props.data
+    err: "Error",
+    keywords: this.props.data,
+    uploadOn: false
   };
 
   componentDidMount = () => {
@@ -29,7 +30,7 @@ class Test extends Component {
             return newObj;
           })
           .flat();
-        this.setState({ posts: posts });
+        this.setState({ posts: posts, uploadOn: false });
         console.log(posts);
       })
       .catch(function(err) {
@@ -96,14 +97,14 @@ class Test extends Component {
             this.handleAscendingPriceSort(posts);
           }}
         >
-          Sort Ascending
+          Sort Price Ascending
         </button>
         <button
           onClick={e => {
             this.handleDescendingPriceSort(posts);
           }}
         >
-          Sort Descending
+          Sort Price Descending
         </button>
         <button
           onClick={e => {
@@ -119,6 +120,7 @@ class Test extends Component {
         >
           Sort by Number of Reviews
         </button>
+        {this.state.uploadOn && <h3>Loading...</h3>}
         {posts.length
           ? posts.map(post => (
               <div key={post.product_id}>
@@ -128,14 +130,13 @@ class Test extends Component {
                     <h1>{post.title}</h1>
                   </div>
                 </a>
-                --- ${post.price / 100} --- Star Rating: {post.stars} --- Number
-                of Reviews: {post.num_reviews} ---
+                --- ${Number(post.price / 100).toFixed(2)} --- Star Rating:{" "}
+                {post.stars} --- Number of Reviews: {post.num_reviews} ---
                 {post.product_id} ---
               </div>
             ))
           : null}
-        {err ? <div>{err}</div> : null}
-        {/* <button onClick={getData}>Get my data</button> */}
+        {err ? <h3>Loading....</h3> : null}
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import GResource from "./GResource";
 import axios from "axios";
 import Test from "../components/Test";
+import { Alert, Form, Button } from "react-bootstrap";
 
 class GRForms extends Component {
   //pass array here!!!!
@@ -108,7 +109,7 @@ class GRForms extends Component {
       return !submit ? (
         <div className="Container">
           <div className="FormKeyWords">
-            <form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
               {imageUrl && (
                 <React.Fragment>
                   <ul>
@@ -117,15 +118,16 @@ class GRForms extends Component {
                         <>
                           <li key={index}>
                             {Object.values(keyword)}
-                            <button
+                            <Button
+                              className="delete-button"
                               variant="danger"
                               onClick={e => {
                                 e.preventDefault();
                                 this.handleDelete(keyword, index);
                               }}
                             >
-                              <span>❌</span>
-                            </button>
+                              Delete
+                            </Button>
                           </li>
                         </>
                       );
@@ -138,18 +140,19 @@ class GRForms extends Component {
                     value={this.state.newKeyword}
                     onChange={this.handleChange}
                   ></input>
-                  <button
+                  <Button
+                    type="submit"
                     onClick={e => {
                       e.preventDefault();
                       this.handleAdd(cleanData);
                     }}
                   >
                     ADD
-                  </button>
+                  </Button>
                   <button type="submit">Search Amazon</button>
                 </React.Fragment>
               )}
-            </form>
+            </Form>
             <div>
               {/* <div className="wrap">
               <div className="search">
