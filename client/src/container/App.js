@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import DragAndDropForm from "../components/DragAndDropForm";
 import AddThing from "../components/AddThing";
 import Navbar from "../components/Navbar";
 import About from "../components/About";
 
-import { NavLink } from "react-bootstrap";
+// import { NavLink } from "react-bootstrap";
 // import Home from "../components/Home";
 import GRForms from "../components/GRForms";
 // import Test from "../components/Test";

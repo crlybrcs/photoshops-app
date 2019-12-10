@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import GResource from "./GResource";
 import axios from "axios";
 import Test from "../components/Test";
-import { Alert, Form, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 class GRForms extends Component {
   //pass array here!!!!
