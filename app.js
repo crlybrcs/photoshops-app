@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
@@ -14,9 +14,7 @@ const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 
 mongoose
-	.connect(process.env.MONGODB_URI || 'mongodb://localhost/photoshops-app', {
-		useNewUrlParser: true
-	})
+	.connect(process.env.MONGODB_URI)
 	.then((x) => {
 		console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
 	})
@@ -47,7 +45,7 @@ app.use(
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/client/build')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 hbs.registerHelper('ifUndefined', (value, options) => {
@@ -72,11 +70,41 @@ app.use(
 	})
 );
 
+// Google OAuth
+
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(
+	new GoogleStrategy(
+		{
+			clientID: process.env.CLIENT_ID,
+			clientSecret: process.env.CLIENT_SECRET,
+			callbackURL: '/auth/google/callback'
+		},
+		(accessToken, refreshToken, profile, done) => {
+			// to see the structure of the data in received response:
+			console.log('Google account details:', profile);
+
+			User.findOne({ googleID: profile.id })
+				.then((user) => {
+					if (user) {
+						done(null, user);
+						return;
+					}
+
+					User.create({ googleID: profile.id })
+						.then((newUser) => {
+							done(null, newUser);
+						})
+						.catch((err) => done(err)); // closes User.create()
+				})
+				.catch((err) => done(err)); // closes User.findOne()
+		}
+	)
+);
+
 app.use(flash());
 require('./passport')(app);
-
-const index = require('./routes/index');
-app.use('/', index);
 
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
@@ -89,5 +117,10 @@ app.use('/googleApi', googleApiRoutes);
 
 const uploadRoutes = require('./routes/file-upload-routes');
 app.use('/api', uploadRoutes);
+
+app.use((req, res) => {
+	// If no routes match, send them the React HTML.
+	res.sendFile(__dirname + '/client/build/index.html');
+});
 
 module.exports = app;
