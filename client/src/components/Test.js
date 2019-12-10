@@ -37,7 +37,7 @@ class Test extends Component {
           this.setState({
             posts: posts,
             uploadOn: false,
-            err: "Please narrow your search terms and rty again"
+            err: "Please narrow your search terms and try again"
           });
         }
         // if (!posts.length) {
