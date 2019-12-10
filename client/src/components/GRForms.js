@@ -19,7 +19,7 @@ class GRForms extends Component {
     const { id } = this.props.match.params;
 
     axios
-      .get(`/googleApi/search/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/googleApi/search/${id}`, { withCredentials: true })
       .then(response => {
         this.setState(
           {
@@ -124,7 +124,7 @@ class GRForms extends Component {
                                 e.preventDefault();
                                 this.triggerDelete(keyword, index);
                               }}
-                            >
+>
                               <span>❌</span>
                             </button>
                           </li>
