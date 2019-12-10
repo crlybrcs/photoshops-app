@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import GResource from "./GResource";
 import axios from "axios";
 import Test from "../components/Test";
+import { Alert, Form, Button } from "react-bootstrap";
 
 class GRForms extends Component {
   //pass array here!!!!
@@ -19,7 +20,9 @@ class GRForms extends Component {
     const { id } = this.props.match.params;
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/googleApi/search/${id}`, { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}/googleApi/search/${id}`, {
+        withCredentials: true
+      })
       .then(response => {
         this.setState(
           {
@@ -78,7 +81,7 @@ class GRForms extends Component {
     console.log(this.cleaData);
   };
 
-  triggerDelete = (keyword, index) => {
+  handleDelete = (keyword, index) => {
     let cleanData = [...this.state.cleanData];
     cleanData.splice(index, 1);
     this.setState({ cleanData: cleanData });
@@ -90,12 +93,11 @@ class GRForms extends Component {
     });
   };
 
-  triggerAdd = event => {
+  handleAdd = event => {
     this.setState(prevState => ({
       cleanData: [...prevState.cleanData, `${this.state.newKeyword}`],
       newKeyword: ""
     }));
-    // this.inputTitle.value = "";
   };
 
   componentDidMount() {
@@ -109,7 +111,7 @@ class GRForms extends Component {
       return !submit ? (
         <div className="Container">
           <div className="FormKeyWords">
-            <form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
               {imageUrl && (
                 <React.Fragment>
                   <ul>
@@ -118,15 +120,16 @@ class GRForms extends Component {
                         <>
                           <li key={index}>
                             {Object.values(keyword)}
-                            <button
+                            <Button
+                              className="delete-button"
                               variant="danger"
                               onClick={e => {
                                 e.preventDefault();
-                                this.triggerDelete(keyword, index);
+                                this.handleDelete(keyword, index);
                               }}
->
-                              <span>❌</span>
-                            </button>
+                            >
+                              Delete
+                            </Button>
                           </li>
                         </>
                       );
@@ -139,19 +142,19 @@ class GRForms extends Component {
                     value={this.state.newKeyword}
                     onChange={this.handleChange}
                   ></input>
-                  <button
+                  <Button
+                    type="submit"
                     onClick={e => {
                       e.preventDefault();
-                      this.triggerAdd(cleanData);
+                      this.handleAdd(cleanData);
                     }}
-                    // ref={el => (this.inputTitle.value = el)}
                   >
                     ADD
-                  </button>
+                  </Button>
                   <button type="submit">Search Amazon</button>
                 </React.Fragment>
               )}
-            </form>
+            </Form>
             <div>
               {/* <div className="wrap">
               <div className="search">

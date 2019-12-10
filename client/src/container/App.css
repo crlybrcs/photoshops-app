@@ -39,7 +39,7 @@
 }
 
 .header-upload {
-	margin: 150px auto;
+	margin-top: 80px;
 	margin-bottom: 30px;
 }
 
@@ -69,7 +69,7 @@ input {
 	max-width: 100%;
 }
 
-.btn-file input[type=file] {
+.btn-file input[type="file"] {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -82,6 +82,20 @@ input {
 	background: white;
 	cursor: inherit;
 	display: block;
+}
+
+.test-page-container {
+	position: relative;
+	top: 100px;
+}
+
+.Container {
+	position: relative;
+	top: 100px;
+}
+
+.delete-button {
+	padding: 5px;
 }
 
 form {

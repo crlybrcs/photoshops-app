@@ -12,10 +12,10 @@ export default class Navbar extends Component {
 				<Nav.Toggle aria-controls="responsive-navbar-nav" />
 				<Nav.Collapse id="responsive-navbar-nav">
 					<Nav className="navbar-nav ml-auto">
-						<NavLink className="nav-item nav-link active pr-2" to="/signup">
+						<NavLink className="nav-item nav-link active pr-2" to="/Signup">
 							Sign up
 						</NavLink>
-						<NavLink className="nav-item nav-link active pr-2" to="/login">
+						<NavLink className="nav-item nav-link active pr-2" to="/Login">
 							Login
 						</NavLink>
 						<NavLink className="nav-item nav-link active pr-2" to="/about">
