@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Alert, Form, Button } from 'react-bootstrap';
 import { login } from '../components/services/auth';
+import GoogleButton from 'react-google-button';
+
 class Login extends Component {
 	//Everything here
 	state = {
@@ -33,6 +35,9 @@ class Login extends Component {
 			}
 		});
 	};
+
+	googleLogin = (response) => {};
+
 	//Functions here
 	render() {
 		//Everything that the browser sees
@@ -67,6 +72,13 @@ class Login extends Component {
 					<Button className="btn btn-dark btn-block " type="submit">
 						Log in
 					</Button>
+					<GoogleButton
+						id="googleButton"
+						type="dark"
+						onClick={() => {
+							console.log('Google button clicked');
+						}}
+					/>
 				</Form>
 			</div>
 		);
