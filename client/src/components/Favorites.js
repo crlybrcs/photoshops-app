@@ -1,13 +1,33 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
+// import Product from "../components/Product";
 
-class Profile extends Component {
-  state = {
-    favorites: []
-  };
+// class Favorites extends Component {
+//   state = {
+//     favorites: [],
+//     uploadOn: false
+//   };
 
-  render() {
-    return <div></div>;
-  }
-}
+//   componentDidMount() {}
 
-export default Profile;
+//   render() {
+//     return (
+//       <div>
+//         {
+//           this.state.uploadOn && <h3>Loading...</h3>;
+//         }
+
+//         {
+//           posts.length ? (
+//             posts.map(post => {
+//               return <Product />;
+//             })
+//           ) : (
+//             <></>
+//           );
+//         }
+//       </div>
+//     );
+//   }
+// }
+
+// export default Favorites;

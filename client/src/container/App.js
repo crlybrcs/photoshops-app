@@ -42,7 +42,7 @@ class App extends React.Component {
         <Route
           exact
           path="/search/:id"
-          render={props => <GRForms {...props} />}
+          render={props => <GRForms user={this.state.user} {...props} />}
         />
         {/* </Switch> */}
 

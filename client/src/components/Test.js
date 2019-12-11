@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import StarYellow from "../images/starYellow.png";
-import StarBlack from "../images/starBlack.png";
-
-// const BrowserHistory = require("react-router/lib/BrowserHistory").default;?\
+import Product from "../components/Product";
+import Filtering from "../components/Filtering";
+import NoProducts from "../components/NoProducts";
 
 class Test extends Component {
   state = {
@@ -51,6 +50,7 @@ class Test extends Component {
   };
 
   handleAscendingPriceSort = event => {
+    console.log(event);
     let priceSort = event.sort((a, b) => {
       console.log("PRICES:", a.price, b.price);
       return (a.price || 0) - (b.price || 0);
@@ -128,86 +128,39 @@ class Test extends Component {
 
   render() {
     const { posts, err, keywords, favorites } = this.state;
-
     const prodName = posts.title && posts.title.split(" ").join("-");
     const amz = "http://amazon.com";
-
     const url = `${amz}/${prodName}/dp/`;
+
     return (
       <div className="test-page-container">
-        List of Products
-        <button
-          onClick={e => {
-            this.handleAscendingPriceSort(posts);
-          }}
-        >
-          Sort Price Ascending
-        </button>
-        <button
-          onClick={e => {
-            this.handleDescendingPriceSort(posts);
-          }}
-        >
-          Sort Price Descending
-        </button>
-        <button
-          onClick={e => {
-            this.handleRatingSort(posts);
-          }}
-        >
-          Sort by Rating
-        </button>
-        <button
-          onClick={e => {
-            this.handleReviewSort(posts);
-          }}
-        >
-          Sort by Number of Reviews
-        </button>
+        <Filtering
+          handleAscendingPriceSort={this.handleAscendingPriceSort}
+          handleDescendingPriceSort={this.handleDescendingPriceSort}
+          handleRatingSort={this.handleRatingSort}
+          handleReviewSort={this.handleReviewSort}
+          posts={this.state.posts}
+        />
+
         {this.state.uploadOn && <h3>Loading...</h3>}
+
         {posts.length ? (
           posts.map(post => {
             return (
-              <>
-                <div key={post.product_id}>
-                  <div onClick={() => this.clickHandle(post)}>
-                    {favorites.includes(post.product_id) === false ? (
-                      <img src={StarBlack} />
-                    ) : (
-                      <img src={StarYellow} />
-                    )}
-                  </div>
-                  <a href={url + post.product_id} target="_blank">
-                    <img src={post.image} alt="product pic" />
-                    <h1>{post.title}</h1>
-                  </a>
-                </div>
-                <div>
-                  --- ${Number(post.price / 100).toFixed(2)} --- Star Rating:{" "}
-                  {post.stars} --- Number of Reviews: {post.num_reviews} ---
-                  {post.product_id} ---
-                </div>
-              </>
+              <Product
+                user={this.props.user}
+                post={post}
+                clickHandle={this.clickHandle}
+                favorites={this.state.favorites}
+                url={url}
+              />
             );
           })
         ) : (
           <></>
         )}
-        {!err ? (
-          <h3>Loading....</h3>
-        ) : (
-          <>
-            <br />
-            {err} <br />{" "}
-            <button
-              onClick={() => {
-                this.onSubmit();
-              }}
-            >
-              Return to Keywords
-            </button>
-          </>
-        )}
+
+        <NoProducts onSubmit={this.onSubmit} err={this.state.err} />
       </div>
     );
   }

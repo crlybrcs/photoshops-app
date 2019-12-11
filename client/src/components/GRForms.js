@@ -184,7 +184,11 @@ class GRForms extends Component {
         </div>
       ) : (
         <div>
-          <Test resetSubmit={this.resetSubmit} data={cleanData} />
+          <Test
+            user={this.props.user}
+            resetSubmit={this.resetSubmit}
+            data={cleanData}
+          />
         </div>
       );
     }
