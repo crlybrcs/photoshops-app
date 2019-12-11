@@ -95,11 +95,14 @@ class Signup extends Component {
 					>
 						Sign Up
 					</button>
+<<<<<<< HEAD
 					<GoogleButtonSignUp />
 					<p className="forgot-password mt-2 text-center">
 						Already registered? <a href="/login">Log in</a>
 					</p>
 					{this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
+=======
+>>>>>>> e43f691c94254564f46e773d30dbbc3a188f04e7
 				</form>
 			</div>
 		);
