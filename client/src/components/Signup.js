@@ -94,10 +94,6 @@ class Signup extends Component {
 					>
 						Sign Up
 					</button>
-					<p className="forgot-password mt-2 text-center">
-						Already registered? <a href="/login">Log in</a>
-					</p>
-					{this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
 				</form>
 			</div>
 		);
