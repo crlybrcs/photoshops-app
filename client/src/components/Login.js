@@ -77,7 +77,6 @@ class Login extends Component {
 					<Button className="btn btn-dark btn-block submit" type="submit">
 						Log in
 					</Button>
-<<<<<<< HEAD
 					<div className="box">
 						{/* <GoogleButton
 							id="googleButton"
@@ -95,21 +94,16 @@ class Login extends Component {
 							</a>
 						</GoogleButtonSignUp>
 					</div>
-=======
-					<GoogleButton
-						id="googleButton"
-						type="dark"
-						onClick={() => {
-							console.log('Google button clicked');
-            }}
-					/>
->>>>>>> e43f691c94254564f46e773d30dbbc3a188f04e7
 				</Form>
-        <a href id="LoginWithAmazon">
-    <img border="0" alt="Login with Amazon"
-        src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png"
-        width="156" height="32" />
- </a>
+				<a href id="LoginWithAmazon">
+					<img
+						border="0"
+						alt="Login with Amazon"
+						src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png"
+						width="156"
+						height="32"
+					/>
+				</a>
 			</div>
 		);
 	}
