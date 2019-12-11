@@ -98,17 +98,30 @@ class Test extends Component {
     this.props.resetSubmit();
   };
 
-  clickHandle = product => {
+  clickHandle = post => {
+    const product = post.product_id;
+    console.log(post);
+    // REMOVE PRODUCT FROM FAVORITES
+    // IF -> IF PRODUCT IS ALREADY IN THE FAVORITES
     if (this.state.favorites.includes(product)) {
       const shallow = [...this.state.favorites];
       const indexOfProduct = shallow.indexOf(product);
       shallow.splice(indexOfProduct, 1);
       this.setState({ favorites: shallow }, () => {
-        console.log("loook now", this.state.favorites);
+        // PUT -> REMOVE PRODUCT FROM USER FAVORITES ARRAY AND DELETE ALLTOGETHER
+        axios.put(`/products/favorite`, post).then(response => {
+          console.log(response);
+        });
       });
+      // ADD PRODUCT TO FAVORITES
+      // ELSE -> PRODUCT TO BE ADDED
     } else {
       this.setState({ favorites: [...this.state.favorites, product] }, () => {
-        console.log(this.state.favorites);
+        // console.log(this.state.favorites);
+        //POST -> CREATING A PRODUCT
+        axios.post("/products/favorite", post).then(response => {
+          console.log(response);
+        });
       });
     }
   };
@@ -153,28 +166,30 @@ class Test extends Component {
         </button>
         {this.state.uploadOn && <h3>Loading...</h3>}
         {posts.length ? (
-          posts.map(post => (
-            <>
-              <div key={post.product_id}>
-                <div onClick={() => this.clickHandle(post.product_id)}>
-                  {favorites.includes(post.product_id) === false ? (
-                    <img src={StarBlack} />
-                  ) : (
-                    <img src={StarYellow} />
-                  )}
+          posts.map(post => {
+            return (
+              <>
+                <div key={post.product_id}>
+                  <div onClick={() => this.clickHandle(post)}>
+                    {favorites.includes(post.product_id) === false ? (
+                      <img src={StarBlack} />
+                    ) : (
+                      <img src={StarYellow} />
+                    )}
+                  </div>
+                  <a href={url + post.product_id} target="_blank">
+                    <img src={post.image} alt="product pic" />
+                    <h1>{post.title}</h1>
+                  </a>
                 </div>
-                <a href={url + post.product_id} target="_blank">
-                  <img src={post.image} alt="product pic" />
-                  <h1>{post.title}</h1>
-                </a>
-              </div>
-              <div>
-                --- ${Number(post.price / 100).toFixed(2)} --- Star Rating:{" "}
-                {post.stars} --- Number of Reviews: {post.num_reviews} ---
-                {post.product_id} ---
-              </div>
-            </>
-          ))
+                <div>
+                  --- ${Number(post.price / 100).toFixed(2)} --- Star Rating:{" "}
+                  {post.stars} --- Number of Reviews: {post.num_reviews} ---
+                  {post.product_id} ---
+                </div>
+              </>
+            );
+          })
         ) : (
           <></>
         )}
