@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+// const BrowserHistory = require("react-router/lib/BrowserHistory").default;?\
 
 class Test extends Component {
   state = {
@@ -30,7 +31,6 @@ class Test extends Component {
             return newObj;
           })
           .flat();
-        console.log("LOOOOOK", posts.length);
         if (posts.length) {
           this.setState({ posts: posts, uploadOn: false });
         } else {
@@ -40,9 +40,6 @@ class Test extends Component {
             err: "Please narrow your search terms and try again"
           });
         }
-        // if (!posts.length) {
-        //   this.setState({ err: "Error" });
-        // }
       })
       .catch(function(err) {
         console.log(err);
@@ -93,8 +90,12 @@ class Test extends Component {
     });
   };
 
+  onSubmit = () => {
+    this.props.resetSubmit();
+  };
+
   render() {
-    const { posts, err } = this.state;
+    const { posts, err, keywords } = this.state;
 
     const prodName = posts.title && posts.title.split(" ").join("-");
     const amz = "http://amazon.com";
@@ -147,9 +148,23 @@ class Test extends Component {
             </div>
           ))
         ) : (
-          <div>Hello</div>
+          <></>
         )}
-        {!err ? <h3>Loading....</h3> : <>{err}</>}
+        {!err ? (
+          <h3>Loading....</h3>
+        ) : (
+          <>
+            <br />
+            {err} <br />{" "}
+            <button
+              onClick={() => {
+                this.onSubmit();
+              }}
+            >
+              Return to Keywords
+            </button>
+          </>
+        )}
       </div>
     );
   }

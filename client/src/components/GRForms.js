@@ -16,6 +16,10 @@ class GRForms extends Component {
     submit: false
   };
 
+  resetSubmit = () => {
+    this.setState({ submit: false });
+  };
+
   getData = () => {
     const { id } = this.props.match.params;
 
@@ -180,7 +184,7 @@ class GRForms extends Component {
         </div>
       ) : (
         <div>
-          <Test data={cleanData} />
+          <Test resetSubmit={this.resetSubmit} data={cleanData} />
         </div>
       );
     }
