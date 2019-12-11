@@ -129,9 +129,25 @@ button .btn-dark {
 	padding-top: 20px;
 }
 
-#googleButton {
-	margin: auto;
-	margin-top: 10px;
-	height: 24px;
-	width: auto;
+.submit {
+	padding: 8px;
+}
+
+input {
+	width: 100%;
+	max-width: 300px;
+	box-sizing: border-box;
+}
+
+.google-button {
+	margin-top: 7px;
+}
+
+.submit {
+	padding: 7px;
+}
+
+.google-button a {
+	color: white;
+	text-decoration: none;
 }

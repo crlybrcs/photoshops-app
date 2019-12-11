@@ -17,7 +17,7 @@ const Navbar = props => {
     return (
       <Nav collapseOnSelect className="navbar navbar-default" fixed="top" expand="lg" bg="dark" variant="dark">
             <Nav.Brand href="/">Photoshops</Nav.Brand>
-            <Nav.Toggle aria-controls="responsive-navbar-nav" />
+        <Nav.Toggle aria-controls="responsive-navbar-nav basic-navbar-nav" />
             <Nav.Collapse id="responsive-navbar-nav">
           <Nav className="navbar-nav ml-auto">
             {props.user ? (

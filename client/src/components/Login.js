@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Alert, Form, Button } from 'react-bootstrap';
 import { login } from '../components/services/auth';
 import GoogleButton from 'react-google-button';
+import GoogleButtonSignUp from './GoogleButtonSignUp';
 
 class Login extends Component {
 	//Everything here
@@ -73,17 +74,25 @@ class Login extends Component {
 						Don't have an account yet? <a href="/signup">Signup</a>
 					</p>
 
-					<Button className="btn btn-dark btn-block " type="submit">
+					<Button className="btn btn-dark btn-block submit" type="submit">
 						Log in
 					</Button>
 					<div className="box">
-						<GoogleButton
+						{/* <GoogleButton
 							id="googleButton"
 							type="dark"
 							onClick={() => {
 								console.log('Google Button clicked!');
 							}}
-						/>
+						/> */}
+						<GoogleButtonSignUp>
+							<a
+								className="nav-item nav-link active pr-2"
+								href={`${process.env.REACT_APP_API_URL || ''}/api/auth/google`}
+							>
+								Google Sign in
+							</a>
+						</GoogleButtonSignUp>
 					</div>
 				</Form>
 			</div>
