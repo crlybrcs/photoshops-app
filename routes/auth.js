@@ -7,8 +7,18 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
-//Code Clip
+//Authenticate Google OAth request
+router.get('/google', passport.authenticate('google', { scope: [ 'profile' ] }));
 
+router.get(
+	'/google/callback',
+	passport.authenticate('google', {
+		failureRedirect: '/auth/login',
+		successRedirect: process.env.SUCCESS_URL
+	})
+);
+
+// user sign ups
 router.post('/signup', (req, res, next) => {
 	const username = req.body.username;
 	const password = req.body.password;

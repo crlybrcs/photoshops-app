@@ -28,6 +28,8 @@ const Navbar = props => {
               </>
             ) : (
                 <React.Fragment>
+                  {/* <a className="nav-item nav-link active pr-2" href={`${process.env.REACT_APP_API_URL || ""}/api/auth/google`}>Google Sign in</a> */}
+
                   <NavLink className="nav-item nav-link active pr-2" to="/signup">
                     Sign up
 						</NavLink>

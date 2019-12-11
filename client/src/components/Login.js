@@ -76,13 +76,15 @@ class Login extends Component {
 					<Button className="btn btn-dark btn-block " type="submit">
 						Log in
 					</Button>
-					<GoogleButton
-						id="googleButton"
-						type="dark"
-						onClick={() => {
-							console.log('Google button clicked');
-						}}
-					/>
+					<div className="box">
+						<GoogleButton
+							id="googleButton"
+							type="dark"
+							onClick={() => {
+								console.log('Google Button clicked');
+							}}
+						/>
+					</div>
 				</Form>
 			</div>
 		);
