@@ -81,7 +81,7 @@ class Login extends Component {
 							id="googleButton"
 							type="dark"
 							onClick={() => {
-								console.log('Google Button clicked');
+								console.log('Google Button clicked!');
 							}}
 						/>
 					</div>
