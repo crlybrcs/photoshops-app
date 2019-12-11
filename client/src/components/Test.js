@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import StarYellow from "../images/starYellow.png";
+import StarBlack from "../images/starBlack.png";
+
 // const BrowserHistory = require("react-router/lib/BrowserHistory").default;?\
 
 class Test extends Component {
@@ -7,11 +10,12 @@ class Test extends Component {
     posts: [],
     keywords: this.props.data,
     uploadOn: false,
-    err: ""
+    err: "",
+    favorites: []
   };
 
   componentDidMount = () => {
-    console.log("component mounting");
+    // console.log("component mounting");
 
     const keywords = this.state.keywords;
 
@@ -94,8 +98,23 @@ class Test extends Component {
     this.props.resetSubmit();
   };
 
+  clickHandle = product => {
+    if (this.state.favorites.includes(product)) {
+      const shallow = [...this.state.favorites];
+      const indexOfProduct = shallow.indexOf(product);
+      shallow.splice(indexOfProduct, 1);
+      this.setState({ favorites: shallow }, () => {
+        console.log("loook now", this.state.favorites);
+      });
+    } else {
+      this.setState({ favorites: [...this.state.favorites, product] }, () => {
+        console.log(this.state.favorites);
+      });
+    }
+  };
+
   render() {
-    const { posts, err, keywords } = this.state;
+    const { posts, err, keywords, favorites } = this.state;
 
     const prodName = posts.title && posts.title.split(" ").join("-");
     const amz = "http://amazon.com";
@@ -135,17 +154,26 @@ class Test extends Component {
         {this.state.uploadOn && <h3>Loading...</h3>}
         {posts.length ? (
           posts.map(post => (
-            <div key={post.product_id}>
-              <a href={url + post.product_id} target="_blank">
-                <div>
+            <>
+              <div key={post.product_id}>
+                <div onClick={() => this.clickHandle(post.product_id)}>
+                  {favorites.includes(post.product_id) === false ? (
+                    <img src={StarBlack} />
+                  ) : (
+                    <img src={StarYellow} />
+                  )}
+                </div>
+                <a href={url + post.product_id} target="_blank">
                   <img src={post.image} alt="product pic" />
                   <h1>{post.title}</h1>
-                </div>
-              </a>
-              --- ${Number(post.price / 100).toFixed(2)} --- Star Rating:{" "}
-              {post.stars} --- Number of Reviews: {post.num_reviews} ---
-              {post.product_id} ---
-            </div>
+                </a>
+              </div>
+              <div>
+                --- ${Number(post.price / 100).toFixed(2)} --- Star Rating:{" "}
+                {post.stars} --- Number of Reviews: {post.num_reviews} ---
+                {post.product_id} ---
+              </div>
+            </>
           ))
         ) : (
           <></>

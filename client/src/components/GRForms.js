@@ -83,7 +83,7 @@ class GRForms extends Component {
     e.preventDefault();
 
     this.setState({ submit: true });
-    console.log(this.cleaData);
+    // console.log(this.cleaData);
   };
 
   handleDelete = (keyword, index) => {
