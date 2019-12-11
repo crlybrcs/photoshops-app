@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { signup } from './services/auth';
 import { Alert, Form, Button } from 'react-bootstrap';
+import GoogleButtonSignUp from './GoogleButtonSignUp';
 
 class Signup extends Component {
 	//Everything here
@@ -94,6 +95,7 @@ class Signup extends Component {
 					>
 						Sign Up
 					</button>
+					<GoogleButtonSignUp />
 					<p className="forgot-password mt-2 text-center">
 						Already registered? <a href="/login">Log in</a>
 					</p>
