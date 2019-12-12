@@ -12,19 +12,15 @@ class Favorites extends Component {
   render() {
     return (
       <div>
-        {
-          this.state.uploadOn && <h3>Loading...</h3>;
-        }
+        {this.state.uploadOn && <h3>Loading...</h3>}
 
-        {
-          posts.length ? (
-            posts.map(post => {
-              return <Product />;
-            })
-          ) : (
-            <></>
-          );
-        }
+        {posts.length ? (
+          posts.map(post => {
+            return <Product />;
+          })
+        ) : (
+          <></>
+        )}
       </div>
     );
   }

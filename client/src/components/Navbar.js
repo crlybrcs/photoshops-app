@@ -2,15 +2,18 @@ import React, { Component } from "react";
 import { Navbar as Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
-import About from "./About";
+// import About from "./About";
 import { logout } from "./services/auth";
 // import { Login } from "../components/Login";
 
 const Navbar = props => {
+  const { user } = props;
   const handleLogout = () => {
     logout();
     props.clearUser(null);
   };
+
+  console.log(user);
 
   return (
     <Nav
@@ -33,6 +36,13 @@ const Navbar = props => {
               <Link to="/profile" className="nav-item nav-link active pr-2">
                 Profile
               </Link>
+              <NavLink
+                className="nav-item nav-link active pr-2"
+                to="/favorites"
+                // user={this.user}
+              >
+                Favorites
+              </NavLink>
               <Link
                 to="/"
                 className="nav-item nav-link active pr-2"
@@ -51,12 +61,6 @@ const Navbar = props => {
               </NavLink>
               <NavLink className="nav-item nav-link active pr-2" to="/about">
                 About
-              </NavLink>
-              <NavLink
-                className="nav-item nav-link active pr-2"
-                to="/favorites"
-              >
-                Favorites
               </NavLink>
             </React.Fragment>
           )}

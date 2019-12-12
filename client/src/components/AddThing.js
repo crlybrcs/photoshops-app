@@ -58,7 +58,7 @@ class AddThing extends Component {
   render() {
     const imageCheck = (
       <div>
-        <img src={this.state.imageUrl} style={{ height: "200px" }} />
+        <img src={this.state.imageUrl} style={{ height: "200px" }} alt="" />
         <h1>Is this your final image?</h1>
       </div>
     );
