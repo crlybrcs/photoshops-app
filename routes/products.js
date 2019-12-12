@@ -5,6 +5,41 @@ const axios = require("axios");
 const Product = require("../models/Product");
 const User = require("../models/User");
 
+router.post("/test/new", (req, res) => {
+  const queryString = req.body.keywords.join("+");
+  axios.get(`http://567ab4ed.ngrok.io/?query=${queryString}`).then(response => {
+    // const price = response.data[0].price;
+    // console.log(Number(price.split("$").join("")));
+    const smallerRes = [...response.data].slice(0, 12);
+    // console.log(smallerRes);
+    const products = smallerRes.map(el => {
+      const newObj = {};
+      newObj.title = el.title;
+      newObj.image = el.image;
+      const price = el.price.split("$").join("");
+      newObj.price = Number(price);
+      newObj.num_reviews = el.num_reviews;
+      newObj.stars = el.stars;
+      newObj.product_id = el.product_id;
+      return newObj;
+    });
+    // const products = response.data.map(el => {
+    //   const newObj = {};
+    //   newObj.title = el.title;
+    //   newObj.image = el.image;
+    //   const price = el.price.split("$").join("");
+    //   console.log(price);
+    //   newObj.price = Number(price);
+    //   // newObj.price = Number(el.price.split("$").join(""));
+    //   newObj.num_reviews = el.num_reviews;
+    //   newObj.stars = el.stars;
+    //   newObj.product_id = el.product_id;
+    // });
+    // console.log(products[0]);
+    res.json(products);
+  });
+});
+
 router.post("/test", (req, res) => {
   //const keywords = "betty crocker spatula red";
 

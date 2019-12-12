@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://localhost:3000/routes/products/test -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+   
+    <!-- <link rel="apple-touch-icon" href="logo192.png" /> -->
+  <link rel="stylesheet" href="./React App_files/bootstrap.min.css">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+   
+    <title>React App</title>
+  <style>@media print {#ghostery-purple-box {display:none !important}}</style><style>body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+</style><style>.App {
+  text-align: center;
+  width: 100%;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+/* .App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+/* .App-link {
+	color: #09d3ac;
+} */
+
+/* * {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+*:before,
+*:after {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+.container-main {
+  background-image: url(/static/media/img3.ae6fbf92.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+nav .nav-item {
+  text-decoration: none !important;
+  color: black;
+}
+
+/* a .navbar-brand {
+	font-size: 28px;
+	font-weight: 200;
+} */
+
+.header-upload {
+  padding-top: 25px;
+  margin-bottom: 30px;
+}
+
+input {
+  text-align: center;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+input {
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.btn-file input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: center;
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.test-page-container {
+  position: relative;
+  top: 100px;
+}
+
+.form-class {
+  width: 300px;
+  margin: 0 auto;
+}
+
+p .forgot-passport {
+  text-align: center;
+}
+
+.form-main {
+  margin-top: 80px;
+}
+
+.form-main h2 {
+  margin-bottom: 20px;
+}
+
+.header-login {
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+button .submit {
+  margin: 10px 0;
+  padding-top: 20px;
+}
+
+.submit {
+  padding: 8px;
+}
+
+input {
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.google-button {
+  margin-top: 7px;
+}
+
+.submit {
+  padding: 7px;
+}
+
+.google-button a {
+  color: white;
+  text-decoration: none;
+}
+
+.block-header {
+  margin: 0 100px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.block-p {
+  margin: 0 100px;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+@media only screen and (max-width: 600px) {
+  /* body {
+		box-sizing: content-box !important;
+	} */
+  .block-header {
+    margin: 0 60px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+  .block-p {
+    margin: 0 40px;
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+}
+
+.box-profile {
+  margin-top: 20px;
+}
+
+.Container {
+  margin: 0;
+}
+
+.delete-button {
+  padding: 5px;
+  border: none;
+}
+
+.FormKeyWords {
+  display: flex;
+  justify-content: center;
+  background-image: url(/static/media/kitchen.e1d25f11.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100vw;
+  height: 93vh;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.Keyword-list {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Keyword {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  font-weight: 700;
+  color: rgb(54, 58, 64);
+}
+
+.keyword-input {
+  border: solid 1px black;
+  margin: 10px;
+}
+
+.keyword-btn {
+  margin: 5px;
+  background-color: rgb(53, 58, 64);
+  border: none;
+}
+</style></head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div class="App"><nav class="navbar navbar-default bg-faded navbar navbar-expand-lg navbar-light bg-light sticky-top"><span class="navbar-brand"><a href="http://localhost:3000/">Photoshops</a></span><button aria-controls="responsive-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler collapsed"><span class="navbar-toggler-icon"></span></button><div class="navbar-collapse collapse" id="responsive-navbar-nav"><nav class="ml-auto justify-content-center navbar navbar-expand navbar-light"><a class="nav-item nav-link active pr-2" href="http://localhost:3000/signup">Sign up</a><a class="nav-item nav-link active pr-2" href="http://localhost:3000/login">Login</a><a class="nav-item nav-link active pr-2" href="http://localhost:3000/about">About</a></nav></div></nav></div></div>
+      <!-- This element's contents will be replaced with your component. -->
+    
+
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+      
+    -->
+      <script src="./React App_files/platform.js" async="" defer=""></script>
+
+  <script src="./React App_files/bundle.js"></script><script src="./React App_files/1.chunk.js"></script><script src="./React App_files/main.chunk.js"></script><script src="./React App_files/main.22637be17fdbb38464b4.hot-update.js"></script>
+
+</body></html>

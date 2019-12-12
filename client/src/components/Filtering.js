@@ -1,4 +1,5 @@
 import React from "react";
+import { Form, Button } from "react-bootstrap";
 
 const Filtering = props => {
   const {
@@ -10,21 +11,26 @@ const Filtering = props => {
   } = props;
   return (
     <div>
-      List of Products
-      <button onClick={() => handleAscendingPriceSort(posts)}>
+      <Button
+        className="button"
+        onClick={() => handleAscendingPriceSort(posts)}
+      >
         Sort Price Ascending
-      </button>
-      <button
+      </Button>
+      <Button
+        className="button"
         onClick={() => {
           handleDescendingPriceSort(posts);
         }}
       >
         Sort Price Descending
-      </button>
-      <button onClick={() => handleRatingSort(posts)}>Sort by Rating</button>
-      <button onClick={() => handleReviewSort(posts)}>
+      </Button>
+      <Button className="button" onClick={() => handleRatingSort(posts)}>
+        Sort by Rating
+      </Button>
+      <Button className="button" onClick={() => handleReviewSort(posts)}>
         Sort by Number of Reviews
-      </button>
+      </Button>
     </div>
   );
 };

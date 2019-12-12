@@ -19,10 +19,11 @@ class Test extends Component {
     const keywords = this.state.keywords;
 
     axios
-      .post("/products/test", { keywords })
+      .post("/products/test/new", { keywords })
       .then(res => {
         console.log(res);
-        const posts = res.data.results
+        // const posts = res.data.results
+        const posts = res.data
           .map(el => {
             const newObj = {};
             newObj.title = el.title;
@@ -31,6 +32,12 @@ class Test extends Component {
             newObj.num_reviews = el.num_reviews;
             newObj.stars = el.stars;
             newObj.product_id = el.product_id;
+            // newObj.title = "Super Swell Water Bottle";
+            // newObj.image = "../images/Swell.jpg";
+            // newObj.price = "49.99";
+            // newObj.num_reviews = "2000";
+            // newObj.stars = "5.0";
+            // newObj.product_id = "BNNKESRNGPSEKN";
             return newObj;
           })
           .flat();
@@ -143,24 +150,29 @@ class Test extends Component {
         />
 
         {this.state.uploadOn && <h3>Loading...</h3>}
+        <div className="product-container">
+          {posts.length ? (
+            posts.map(post => {
+              return (
+                <Product
+                  user={this.props.user}
+                  post={post}
+                  clickHandle={this.clickHandle}
+                  favorites={this.state.favorites}
+                  url={url}
+                />
+              );
+            })
+          ) : (
+            <></>
+          )}
+        </div>
 
-        {posts.length ? (
-          posts.map(post => {
-            return (
-              <Product
-                user={this.props.user}
-                post={post}
-                clickHandle={this.clickHandle}
-                favorites={this.state.favorites}
-                url={url}
-              />
-            );
-          })
-        ) : (
-          <></>
-        )}
-
-        <NoProducts onSubmit={this.onSubmit} err={this.state.err} />
+        <NoProducts
+          {...this.props}
+          onSubmit={this.onSubmit}
+          err={this.state.err}
+        />
       </div>
     );
   }

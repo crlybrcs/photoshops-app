@@ -12,7 +12,7 @@ const NoProducts = props => {
           {err} <br />{" "}
           <button
             onClick={() => {
-              this.props.history.push("/");
+              props.history.push("/");
             }}
           >
             Return to Keywords
