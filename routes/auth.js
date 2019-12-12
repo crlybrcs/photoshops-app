@@ -7,6 +7,19 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
+
+//Amazon Stuff
+router.get('/amazon', passport.authenticate('amazon', { scope: ["profile", "postal_code"] }));
+//Authenticate Amazon OAth request
+router.get(
+	'/amazon/callback',
+	passport.authenticate('amazon', {
+		failureRedirect: '/auth/login',
+		successRedirect: process.env.SUCCESS_URL
+	})
+);
+
+// sign ups
 //Authenticate Google OAth request
 router.get('/google', passport.authenticate('google', { scope: [ 'profile' ] }));
 
