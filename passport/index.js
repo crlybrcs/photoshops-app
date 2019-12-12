@@ -39,7 +39,7 @@ passport.use(
 );
 
 // Google Oath
-const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(
 	new GoogleStrategy(
