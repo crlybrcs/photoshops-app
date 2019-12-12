@@ -16,7 +16,12 @@ const Navbar = props => {
   
     return (
       <Nav collapseOnSelect className="navbar navbar-default bg-faded"  sticky="top" expand="lg" bg="light" variant="light">
-            <Nav.Brand href="/">Photoshops</Nav.Brand>
+            {/* <Link to="/">Photoshops</Link> */}
+        <Nav.Brand >
+          <Link to='/'>
+          Photoshops
+          </Link>
+          </Nav.Brand>
         <Nav.Toggle aria-controls="responsive-navbar-nav" />
             <Nav.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto justify-content-center">
