@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { logout } from "./services/auth";
 // import { Login } from "../components/Login";
 import Profile from "./Profile";
+import WelcomePage from "./WelcomePage";
 
 const Navbar = props => {
   const { user } = props;
@@ -22,23 +23,26 @@ const Navbar = props => {
       bg="light"
       variant="light"
     >
-      {/* <Link to="/">Photoshops</Link> */}
+   
       <Nav.Brand>
-        <Link to="/">Photoshops</Link>
+        {/* <Link className="navbar-main" to="/">Photoshops</Link> */}
+        <NavLink className="nav-item navbar-main nav-link " to="/">Photoshops</NavLink>
       </Nav.Brand>
       <Nav.Toggle aria-controls="responsive-navbar-nav" />
       <Nav.Collapse id="responsive-navbar-nav">
-        <Nav className="ml-auto justify-content-center">
+        <Nav className="ml-auto justify-content-center p-0">
           {props.user ? (
             <>
-              <Link to="/about" className="nav-item nav-link active pr-2">
+              {/* <h4>{props.user.name}</h4> */}
+              <Link to="/about" className="nav-item nav-link active">
                 About
               </Link>
-              <Link to="/profile" className="nav-item nav-link active pr-2">
+              <Link to="/profile" className="nav-item nav-link active">
                 Profile
               </Link>
+              <Link to="/welcomepage" className="nav-item nav-link active">Welcome</Link>
               <Link
-                className="nav-item nav-link active pr-2"
+                className="nav-item nav-link active"
                 to="/favorites"
                 // user={this.user}
               >
@@ -46,7 +50,7 @@ const Navbar = props => {
               </Link>
               <Link
                 to="/"
-                className="nav-item nav-link active pr-2"
+                className="nav-item nav-link active"
                 onClick={handleLogout}
               >
                 Logout

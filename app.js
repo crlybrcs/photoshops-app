@@ -129,6 +129,9 @@ app.use('/api', uploadRoutes);
 const productRoutes = require('./routes/products');
 app.use('/products', productRoutes);
 
+const profileRoutes = require('./routes/profile');
+app.use('/api/profile', profileRoutes);
+
 app.use((req, res) => {
 	// If no routes match, send them the React HTML.
 	res.sendFile(__dirname + '/client/build/index.html');

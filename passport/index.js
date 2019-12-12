@@ -4,8 +4,7 @@ require('./serializers');
 require('./localStrategy');
 const AmazonStrategy = require('passport-amazon').Strategy;
 
-//const util = require("util"),
-
+// AMAZON STRATEGY - OATH:
 passport.use(
 	new AmazonStrategy(
 		{
@@ -16,7 +15,7 @@ passport.use(
 		},
 		function(accessToken, refreshToken, profile, done) {
 			console.log(profile);
-			User.findOne({ clientID: profile.id })
+			User.findOne({ amzId: profile.id })
 				.then((user) => {
 					if (user) {
 						console.log('User', user);
@@ -38,9 +37,8 @@ passport.use(
 	)
 );
 
-// Google Oath
+// GOOGLE STRATEGY - OATH:
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-
 passport.use(
 	new GoogleStrategy(
 		{

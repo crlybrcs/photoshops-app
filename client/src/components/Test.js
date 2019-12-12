@@ -14,7 +14,7 @@ class Test extends Component {
   };
 
   componentDidMount = () => {
-    // console.log("component mounting");
+    console.log("component mounting");
 
     const keywords = this.state.keywords;
 
