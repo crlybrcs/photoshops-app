@@ -133,7 +133,7 @@ class GRForms extends Component {
                     this.goBack();
                   }}
                 >
-                  Add A New Pic
+                  Add another photo
                 </Button>
               </div>
               {imageUrl && (
@@ -177,7 +177,7 @@ class GRForms extends Component {
                       this.handleAdd(cleanData);
                     }}
                   >
-                    ADD
+                    Add
                   </Button>
                   <Button className="keyword-btn" type="submit">
                     Search Amazon

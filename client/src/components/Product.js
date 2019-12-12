@@ -40,7 +40,7 @@ const Product = props => {
         <a href={`https://amazon.com${post.product_id}`}>
           <h5>{post.title}</h5>
         </a>
-        <p>${Number(post.price / 100).toFixed(2)}</p>
+        <p>{post.price}</p>
         <p>Star Rating: {post.stars}</p>{" "}
         <p>
           {" "}
