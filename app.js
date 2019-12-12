@@ -13,14 +13,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 
-// Amazon OAuth requisites
-
-// const util = require("util"),
-//   AmazonStrategy = require("passport-amazon").Strategy;
-
-
-// End of Amazon req
-
 mongoose
 	.connect(process.env.MONGODB_URI || 'mongodb://localhost/photoshops-app')
 	.then((x) => {
@@ -41,8 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Express View engine setup
-
+// Express View engine setups
 app.use(
 	require('node-sass-middleware')({
 		src: path.join(__dirname, 'public'),
@@ -78,20 +69,22 @@ app.use(
 	})
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(flash());
 require('./passport')(app);
 
-app.get("/", function(req, res) {
-  res.render("index", { user: req.user });
+app.get('/', function(req, res) {
+	res.render('index', { user: req.user });
 });
 
 // app.get("/account", ensureAuthenticated, function(req, res) {
 //   res.render("account", { user: req.user });
 // });
 
-app.get("/login", function(req, res) {
-  res.render("login", { user: req.user });
+app.get('/login', function(req, res) {
+	res.render('login', { user: req.user });
 });
 
 // GET /auth/amazon
@@ -99,41 +92,33 @@ app.get("/login", function(req, res) {
 //   request.  The first step in Amazon authentication will involve
 //   redirecting the user to amazon.com.  After authorization, Amazon
 //   will redirect the user back to this application at /auth/amazon/callback
-app.get(
-  "/auth/amazon",
-  passport.authenticate("amazon", { scope: ["profile", "postal_code"] }),
-  function(req, res) {
-    // The request will be redirected to Amazon for authentication, so this
-    // function will not be called.
-  }
-);
+app.get('/auth/amazon', passport.authenticate('amazon', { scope: [ 'profile', 'postal_code' ] }), function(req, res) {
+	// The request will be redirected to Amazon for authentication, so this
+	// function will not be called.
+});
 
 // GET /auth/amazon/callback
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get(
-  "/auth/amazon/callback",
-  passport.authenticate("amazon", { failureRedirect: "/login" }),
-  function(req, res) {
-    res.redirect("/");
-  }
-);
-
-app.get("/logout", function(req, res) {
-  req.logout();
-  res.redirect("/");
+app.get('/auth/amazon/callback', passport.authenticate('amazon', { failureRedirect: '/login' }), function(req, res) {
+	res.redirect('/');
 });
 
-// const authRoutes = require("./routes/auth");
-// app.use("/auth", authRoutes);
+app.get('/logout', function(req, res) {
+	req.logout();
+	res.redirect('/');
+});
 
-const amzRoutes = require("./routes/amz-routes")
-app.use("/", amzRoutes)
+// const authRoutes = require('./routes/auth');
+// app.use('/auth', authRoutes);
 
-const authRoutes = require("./routes/auth");
-app.use("/api/auth", authRoutes);
+const amzRoutes = require('./routes/amz-routes');
+app.use('/', amzRoutes);
+
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 
 const googleApiRoutes = require('./routes/googleApiRoute');
 app.use('/googleApi', googleApiRoutes);
