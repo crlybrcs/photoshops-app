@@ -60,7 +60,10 @@ class Test extends Component {
     console.log(event);
     let priceSort = event.sort((a, b) => {
       console.log("PRICES:", a.price, b.price);
-      return (a.price || 0) - (b.price || 0);
+      return (
+        (parseFloat(a.price.slice(1)) || 0) -
+        (parseFloat(b.price.slice(1)) || 0)
+      );
     });
     console.log(priceSort);
     this.setState({
@@ -71,7 +74,10 @@ class Test extends Component {
   handleDescendingPriceSort = event => {
     let priceSort = event.sort((a, b) => {
       console.log("PRICES:", a.price, b.price);
-      return (b.price || 0) - (a.price || 0);
+      return (
+        (parseFloat(b.price.slice(1)) || 0) -
+        (parseFloat(a.price.slice(1)) || 0)
+      );
     });
     console.log(priceSort);
     this.setState({
