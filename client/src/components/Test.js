@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Product from "../components/Product";
+import Filtering from "../components/Filtering";
+import NoProducts from "../components/NoProducts";
 
 class Test extends Component {
   state = {
     posts: [],
     keywords: this.props.data,
     uploadOn: false,
-    err: ""
+    err: "",
+    favorites: []
   };
 
   componentDidMount = () => {
-    console.log("component mounting");
+    // console.log("component mounting");
 
     const keywords = this.state.keywords;
 
@@ -30,7 +34,6 @@ class Test extends Component {
             return newObj;
           })
           .flat();
-        console.log("LOOOOOK", posts.length);
         if (posts.length) {
           this.setState({ posts: posts, uploadOn: false });
         } else {
@@ -40,9 +43,6 @@ class Test extends Component {
             err: "Please narrow your search terms and try again"
           });
         }
-        // if (!posts.length) {
-        //   this.setState({ err: "Error" });
-        // }
       })
       .catch(function(err) {
         console.log(err);
@@ -50,6 +50,7 @@ class Test extends Component {
   };
 
   handleAscendingPriceSort = event => {
+    console.log(event);
     let priceSort = event.sort((a, b) => {
       console.log("PRICES:", a.price, b.price);
       return (a.price || 0) - (b.price || 0);
@@ -93,63 +94,73 @@ class Test extends Component {
     });
   };
 
-  render() {
-    const { posts, err } = this.state;
+  onSubmit = () => {
+    this.props.resetSubmit();
+  };
 
+  clickHandle = post => {
+    const product = post.product_id;
+    console.log(post);
+    // REMOVE PRODUCT FROM FAVORITES
+    // IF -> IF PRODUCT IS ALREADY IN THE FAVORITES
+    if (this.state.favorites.includes(product)) {
+      const shallow = [...this.state.favorites];
+      const indexOfProduct = shallow.indexOf(product);
+      shallow.splice(indexOfProduct, 1);
+      this.setState({ favorites: shallow }, () => {
+        // PUT -> REMOVE PRODUCT FROM USER FAVORITES ARRAY AND DELETE ALLTOGETHER
+        axios.put(`/products/favorite`, post).then(response => {
+          console.log(response);
+        });
+      });
+      // ADD PRODUCT TO FAVORITES
+      // ELSE -> PRODUCT TO BE ADDED
+    } else {
+      this.setState({ favorites: [...this.state.favorites, product] }, () => {
+        // console.log(this.state.favorites);
+        //POST -> CREATING A PRODUCT
+        axios.post("/products/favorite", post).then(response => {
+          console.log(response);
+        });
+      });
+    }
+  };
+
+  render() {
+    const { posts, err, keywords, favorites } = this.state;
     const prodName = posts.title && posts.title.split(" ").join("-");
     const amz = "http://amazon.com";
-
     const url = `${amz}/${prodName}/dp/`;
+
     return (
       <div className="test-page-container">
-        List of Products
-        <button
-          onClick={e => {
-            this.handleAscendingPriceSort(posts);
-          }}
-        >
-          Sort Price Ascending
-        </button>
-        <button
-          onClick={e => {
-            this.handleDescendingPriceSort(posts);
-          }}
-        >
-          Sort Price Descending
-        </button>
-        <button
-          onClick={e => {
-            this.handleRatingSort(posts);
-          }}
-        >
-          Sort by Rating
-        </button>
-        <button
-          onClick={e => {
-            this.handleReviewSort(posts);
-          }}
-        >
-          Sort by Number of Reviews
-        </button>
+        <Filtering
+          handleAscendingPriceSort={this.handleAscendingPriceSort}
+          handleDescendingPriceSort={this.handleDescendingPriceSort}
+          handleRatingSort={this.handleRatingSort}
+          handleReviewSort={this.handleReviewSort}
+          posts={this.state.posts}
+        />
+
         {this.state.uploadOn && <h3>Loading...</h3>}
+
         {posts.length ? (
-          posts.map(post => (
-            <div key={post.product_id}>
-              <a href={url + post.product_id} target="_blank">
-                <div>
-                  <img src={post.image} alt="product pic" />
-                  <h1>{post.title}</h1>
-                </div>
-              </a>
-              --- ${Number(post.price / 100).toFixed(2)} --- Star Rating:{" "}
-              {post.stars} --- Number of Reviews: {post.num_reviews} ---
-              {post.product_id} ---
-            </div>
-          ))
+          posts.map(post => {
+            return (
+              <Product
+                user={this.props.user}
+                post={post}
+                clickHandle={this.clickHandle}
+                favorites={this.state.favorites}
+                url={url}
+              />
+            );
+          })
         ) : (
-          <div>Change this div to something meaningful</div>
+          <></>
         )}
-        {!err ? <h3>Loading....</h3> : <>{err}</>}
+
+        <NoProducts onSubmit={this.onSubmit} err={this.state.err} />
       </div>
     );
   }

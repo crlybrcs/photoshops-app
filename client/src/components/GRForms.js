@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import GResource from "./GResource";
 import axios from "axios";
 import Test from "../components/Test";
-import { Alert, Form, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 class GRForms extends Component {
   //pass array here!!!!
@@ -14,6 +14,10 @@ class GRForms extends Component {
     cleanData: [],
     newKeyword: "",
     submit: false
+  };
+
+  resetSubmit = () => {
+    this.setState({ submit: false });
   };
 
   getData = () => {
@@ -79,7 +83,7 @@ class GRForms extends Component {
     e.preventDefault();
 
     this.setState({ submit: true });
-    console.log(this.cleaData);
+    // console.log(this.cleaData);
   };
 
   handleDelete = (keyword, index) => {
@@ -180,7 +184,11 @@ class GRForms extends Component {
         </div>
       ) : (
         <div>
-          <Test data={cleanData} />
+          <Test
+            user={this.props.user}
+            resetSubmit={this.resetSubmit}
+            data={cleanData}
+          />
         </div>
       );
     }
