@@ -5,7 +5,7 @@ const NoProducts = props => {
   return (
     <div>
       {!err ? (
-        <h3>Loading....</h3>
+        <h3>LoadingFOO....</h3>
       ) : (
         <>
           <br />
