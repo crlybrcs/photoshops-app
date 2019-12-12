@@ -5,8 +5,11 @@ const userSchema = new Schema(
 	{
 		username: String,
 		password: String,
-    googleId: String,
-    amzId: String,
+		name: String,
+		surname: String,
+		email: String,
+		googleId: String,
+		amzId: String,
 		products: [
 			{
 				type: Schema.Types.ObjectId,

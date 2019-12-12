@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
 
 /* GET About page */
 router.get('/about', (req, res) => {
-	res.render('about');
+	res.json('about');
 });
 
 module.exports = router;

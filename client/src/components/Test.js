@@ -14,14 +14,14 @@ class Test extends Component {
   };
 
   componentDidMount = () => {
-    // console.log("component mounting");
+    console.log("component mounting");
 
     const keywords = this.state.keywords;
 
     axios
       .post("/products/test", { keywords })
       .then(res => {
-        console.log(res);
+        console.log("RESULT TEST:", res);
         const posts = res.data.results
           .map(el => {
             const newObj = {};

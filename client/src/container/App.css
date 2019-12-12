@@ -22,21 +22,21 @@
 	color: #09d3ac;
 } */
 
-/* * {
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-}
-*:before,
-*:after {
+/* {
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
 } */
-
-* {
+*:before,
+*:after {
 	box-sizing: border-box;
 }
+
+/* *,
+::after,
+::before {
+	box-sizing: content-box;
+} */
 
 .container-main {
 	background-image: url("../images/img3.jpg");
@@ -113,8 +113,19 @@ input {
 	padding: 5px;
 }
 
+.form-control {
+	margin: 5x;
+}
+
+.label-name {
+	margin-top: 25px;
+}
+
+.form-label {
+	margin: 10px;
+}
+
 .form-class {
-	width: 300px;
 	margin: 0 auto;
 }
 
@@ -131,7 +142,7 @@ p .forgot-passport {
 }
 
 .header-login {
-	margin-top: 80px;
+	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
@@ -140,7 +151,7 @@ button .submit {
 	padding-top: 20px;
 }
 
-.submit {
+.btn-block .submit {
 	padding: 8px;
 }
 
@@ -185,14 +196,75 @@ input {
 		margin-top: 30px;
 		margin-bottom: 40px;
 		text-align: left;
+		text-align: center;
 	}
 	.block-p {
 		margin: 0 40px;
 		margin-bottom: 15px;
 		text-align: justify;
 	}
+	#image {
+		height: 200px;
+		width: auto;
+	}
+
+	.label-name {
+		margin-top: 40px;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	#image {
+		height: 220px;
+		width: auto;
+	}
 }
 
 .box-profile {
 	margin-top: 20px;
+}
+
+.btn-results {
+	display: block;
+	max-width: 180px;
+	margin: auto;
+}
+
+.block-loading {
+	margin-top: 15px;
+}
+
+.uploaded-img {
+	margin: 20px 0;
+	height: 400px;
+	width: auto;
+}
+
+.final-image {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+a:hover .navbar-main {
+	text-decoration: none;
+	text-decoration-color: black;
+	color: black;
+	touch-action: none;
+}
+
+.navbar-expand {
+	flex-flow: row wrap;
+}
+
+.alert {
+	display: block;
+	max-width: 350px;
+	margin: auto;
+}
+
+.btn-dark {
+	display: block;
+	padding: 10px;
+	width: 300px;
+	margin: 5px auto;
 }

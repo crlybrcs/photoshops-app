@@ -7,10 +7,8 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
-
-//Amazon Stuff
-router.get('/amazon', passport.authenticate('amazon', { scope: ["profile", "postal_code"] }));
-//Authenticate Amazon OAth request
+// Authentication Amazon OAth request:
+router.get('/amazon', passport.authenticate('amazon', { scope: [ 'profile', 'postal_code' ] }));
 router.get(
 	'/amazon/callback',
 	passport.authenticate('amazon', {
@@ -19,8 +17,7 @@ router.get(
 	})
 );
 
-// sign ups
-//Authenticate Google OAth request
+// Authentication Google OAth request:
 router.get('/google', passport.authenticate('google', { scope: [ 'profile' ] }));
 
 router.get(
@@ -31,7 +28,7 @@ router.get(
 	})
 );
 
-// user sign ups
+// User sign up:
 router.post('/signup', (req, res, next) => {
 	const username = req.body.username;
 	const password = req.body.password;
@@ -87,6 +84,7 @@ router.post('/signup', (req, res, next) => {
 	});
 });
 
+// User LOGIN:
 router.post('/login', (req, res, next) => {
 	passport.authenticate('local', (err, user) => {
 		if (err) {
@@ -104,6 +102,7 @@ router.post('/login', (req, res, next) => {
 	})(req, res, next);
 });
 
+// User LOGOUT:
 router.delete('/logout', (req, res) => {
 	// passport logout function
 	req.logout();
