@@ -15,11 +15,9 @@ const flash = require('connect-flash');
 
 // Amazon OAuth requisites
 
-const util = require("util"),
-  AmazonStrategy = require("passport-amazon").Strategy;
+// const util = require("util"),
+//   AmazonStrategy = require("passport-amazon").Strategy;
 
-const amzID = "AKIAJPVEMPTPN573SW7Q";
-const amzClientSecret = "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";
 
 // End of Amazon req
 

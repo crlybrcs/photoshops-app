@@ -5,7 +5,8 @@ const userSchema = new Schema(
 	{
 		username: String,
 		password: String,
-		googleId: String,
+    googleId: String,
+    amzId: String,
 		products: [
 			{
 				type: Schema.Types.ObjectId,
