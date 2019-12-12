@@ -306,3 +306,11 @@ input {
     box-shadow: 0.5px 1px rgb(148, 148, 148);
   }
 }
+
+/* .favorites {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+} */

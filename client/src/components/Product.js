@@ -3,19 +3,33 @@ import StarYellow from "../images/starYellow.png";
 import StarBlack from "../images/starBlack.png";
 
 const Product = props => {
-  const { post, clickHandle, user, favorites, url } = props;
-  console.log(props);
+  const { post, clickHandle, user, favorites } = props;
+  console.log(props.relevant);
+
+  const ternaryFromKyle = (
+    <>
+      {user ? (
+        favorites.includes(post.product_id) === false ? (
+          <img className="product-star" src={StarBlack} />
+        ) : (
+          <img className="product-star" src={StarYellow} />
+        )
+      ) : null}
+    </>
+  );
+
+  const alreadyFavorite = (
+    <>
+      <img className="product-star" src={StarYellow} />
+    </>
+  );
+  console.log(favorites.includes(post.product_id));
   return (
     <div className="product" key={post.product_id}>
       {/* <a href={url + post.product_id} target="_blank"> */}
+      {/* <div onClick={() => clickHandle(post)}>{ternaryFromKyle}</div> */}
       <div onClick={() => clickHandle(post)}>
-        {user ? (
-          favorites.includes(post.product_id) === false ? (
-            <img className="product-star" src={StarBlack} />
-          ) : (
-            <img className="product-star" src={StarYellow} />
-          )
-        ) : null}
+        {props.relevant ? alreadyFavorite : ternaryFromKyle}
       </div>
       <div className="imageWrapper">
         <a href={`https://amazon.com${post.product_id}`}>

@@ -9,6 +9,7 @@ import GRForms from "../components/GRForms";
 import Signup from "../components/Signup";
 import Login from "../components/Login";
 import Profile from "../components/Profile";
+import Favorites from "../components/Favorites";
 
 class App extends React.Component {
   state = {
@@ -41,12 +42,27 @@ class App extends React.Component {
           path="/search/:id"
           render={props => <GRForms user={this.state.user} {...props} />}
         />
-        {/* </Switch> */}
+
+        <div>
+          <Route
+            exact
+            path="/favorites"
+            render={props => (
+              <Favorites
+                user={this.state.user}
+                setUser={this.setUser}
+                {...props}
+              />
+            )}
+          />
+        </div>
 
         <Route
+          exact
           path="/profile"
           render={props => <Profile {...props} setUser={this.setUser} />}
         />
+
         <Route
           path="/signup"
           render={props => <Signup {...props} setUser={this.setUser} />}

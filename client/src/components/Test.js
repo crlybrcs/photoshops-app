@@ -159,7 +159,6 @@ class Test extends Component {
                   post={post}
                   clickHandle={this.clickHandle}
                   favorites={this.state.favorites}
-                  url={url}
                 />
               );
             })

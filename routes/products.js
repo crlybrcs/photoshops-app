@@ -7,37 +7,39 @@ const User = require("../models/User");
 
 router.post("/test/new", (req, res) => {
   const queryString = req.body.keywords.join("+");
-  axios.get(`http://567ab4ed.ngrok.io/?query=${queryString}`).then(response => {
-    // const price = response.data[0].price;
-    // console.log(Number(price.split("$").join("")));
-    const smallerRes = [...response.data].slice(0, 12);
-    // console.log(smallerRes);
-    const products = smallerRes.map(el => {
-      const newObj = {};
-      newObj.title = el.title;
-      newObj.image = el.image;
-      const price = el.price.split("$").join("");
-      newObj.price = Number(price);
-      newObj.num_reviews = el.num_reviews;
-      newObj.stars = el.stars;
-      newObj.product_id = el.product_id;
-      return newObj;
+  axios
+    .get(`https://protected-harbor-21252.herokuapp.com/?query=${queryString}`)
+    .then(response => {
+      // const price = response.data[0].price;
+      // console.log(Number(price.split("$").join("")));
+      const smallerRes = [...response.data].slice(0, 12);
+      // console.log(smallerRes);
+      const products = smallerRes.map(el => {
+        const newObj = {};
+        newObj.title = el.title;
+        newObj.image = el.image;
+        const price = el.price.split("$").join("");
+        newObj.price = Number(price);
+        newObj.num_reviews = el.num_reviews;
+        newObj.stars = el.stars;
+        newObj.product_id = el.product_id;
+        return newObj;
+      });
+      // const products = response.data.map(el => {
+      //   const newObj = {};
+      //   newObj.title = el.title;
+      //   newObj.image = el.image;
+      //   const price = el.price.split("$").join("");
+      //   console.log(price);
+      //   newObj.price = Number(price);
+      //   // newObj.price = Number(el.price.split("$").join(""));
+      //   newObj.num_reviews = el.num_reviews;
+      //   newObj.stars = el.stars;
+      //   newObj.product_id = el.product_id;
+      // });
+      // console.log(products[0]);
+      res.json(products);
     });
-    // const products = response.data.map(el => {
-    //   const newObj = {};
-    //   newObj.title = el.title;
-    //   newObj.image = el.image;
-    //   const price = el.price.split("$").join("");
-    //   console.log(price);
-    //   newObj.price = Number(price);
-    //   // newObj.price = Number(el.price.split("$").join(""));
-    //   newObj.num_reviews = el.num_reviews;
-    //   newObj.stars = el.stars;
-    //   newObj.product_id = el.product_id;
-    // });
-    // console.log(products[0]);
-    res.json(products);
-  });
 });
 
 router.post("/test", (req, res) => {
@@ -62,8 +64,17 @@ router.post("/test", (req, res) => {
     });
 });
 
+router.get("/myfavorites", (req, res) => {
+  User.findById(req.user._id)
+    .populate("products")
+    .then(user => {
+      console.log(user.products[user.products.length - 1]);
+      res.json(user);
+    });
+});
+
 router.post("/favorite", (req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
   // const { title, image, price, num_reviews, stars, product_id } = req.body;
   Product.create({ ...req.body }).then(
     // Product.create({ title, image, price, num_reviews, stars, product_id }).then(
@@ -73,7 +84,10 @@ router.post("/favorite", (req, res) => {
       // $PUSH ADDS TO MONGO ARRAY
       User.findByIdAndUpdate(req.user._id, {
         $push: { products: productId }
-      }).then(() => {
+      }).then(responseFromDB => {
+        console.log(
+          responseFromDB.products[responseFromDB.products.length - 1]
+        );
         // console.log("all good");
         res.json({ message: "Product Successfully added to favorites" });
       });
