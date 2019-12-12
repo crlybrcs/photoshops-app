@@ -282,9 +282,20 @@ input {
   justify-content: flex-start;
   height: 30px;
 }
+
 .productInfoWrapper p {
   margin-bottom: 0;
 }
+
+.productInfoWrapper a h5 {
+  color: rgb(53, 58, 64);
+  text-decoration: none !important;
+}
+
+.productInfoWrapper a h5:hover {
+  text-decoration: none !important;
+}
+
 .button {
   background-color: rgb(53, 58, 64);
   border: none;
