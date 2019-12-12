@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { logout } from "./services/auth";
 // import { Login } from "../components/Login";
 import Profile from "./Profile";
+import WelcomePage from "./WelcomePage";
 
 const Navbar = props => {
   const { user } = props;
@@ -39,13 +40,14 @@ const Navbar = props => {
               <Link to="/profile" className="nav-item nav-link active">
                 Profile
               </Link>
-              {/* <Link
+              <Link to="/welcomepage" className="nav-item nav-link active">Welcome</Link>
+              <Link
                 className="nav-item nav-link active"
                 to="/favorites"
                 // user={this.user}
               >
                 Favorites
-              </Link> */}
+              </Link>
               <Link
                 to="/"
                 className="nav-item nav-link active"

@@ -73,7 +73,7 @@ class Profile extends React.Component {
 							placeholder="Enter email"
 						/>
 					</Form.Group>
-					<Button variant="dark" type="profile-submit">
+					<Button className="profile-submit" variant="dark" type="button">
 						Submit
 					</Button>
 				</Form>

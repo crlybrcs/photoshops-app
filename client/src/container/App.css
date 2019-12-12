@@ -262,9 +262,18 @@ a:hover .navbar-main {
 	margin: auto;
 }
 
-.btn-dark {
+.profile-submit {
 	display: block;
 	padding: 10px;
 	width: 300px;
-	margin: 5px auto;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.welcome-main {
+	background-image: url("../images/img20.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
 }
