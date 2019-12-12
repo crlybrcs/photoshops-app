@@ -109,38 +109,60 @@ class GRForms extends Component {
     this.getData();
   }
 
+  goBack = () => {
+    this.props.history.push("/");
+  };
+
+  // onSubmit = () => {
+  //   this.props.resetSubmit();
+  // };
+
   render() {
+    console.log(this.props);
     const { imageUrl, cleanData, submit } = this.state;
 
     {
       return !submit ? (
         <div className="Container">
           <div className="FormKeyWords">
-            <Form onSubmit={this.handleSubmit}>
+            <Form className="Form" onSubmit={this.handleSubmit}>
+              <div>
+                <Button
+                  className="keyword-btn"
+                  onClick={() => {
+                    this.goBack();
+                  }}
+                >
+                  Add A New Pic
+                </Button>
+              </div>
               {imageUrl && (
                 <React.Fragment>
-                  <ul>
-                    {this.state.cleanData.map((keyword, index) => {
-                      return (
-                        <>
-                          <li key={index}>
-                            {Object.values(keyword)}
-                            <Button
-                              className="delete-button"
-                              variant="danger"
-                              onClick={e => {
-                                e.preventDefault();
-                                this.handleDelete(keyword, index);
-                              }}
-                            >
-                              Delete
-                            </Button>
-                          </li>
-                        </>
-                      );
-                    })}
-                  </ul>
+                  <div className="list">
+                    <ul className="Keyword-list">
+                      {this.state.cleanData.map((keyword, index) => {
+                        return (
+                          <>
+                            <li className="Keyword" key={index}>
+                              {Object.values(keyword)}
+                              <Button
+                                className="delete-button"
+                                variant="danger"
+                                onClick={e => {
+                                  e.preventDefault();
+                                  this.handleDelete(keyword, index);
+                                }}
+                              >
+                                Delete
+                              </Button>
+                            </li>
+                          </>
+                        );
+                      })}
+                    </ul>
+                  </div>
                   <input
+                    className="keyword-input"
                     type="text"
                     name="newKeyword"
                     id="newKeyword"
@@ -148,6 +170,7 @@ class GRForms extends Component {
                     onChange={this.handleChange}
                   ></input>
                   <Button
+                    className="keyword-btn"
                     type="submit"
                     onClick={e => {
                       e.preventDefault();
@@ -156,30 +179,12 @@ class GRForms extends Component {
                   >
                     ADD
                   </Button>
-                  <button type="submit">Search Amazon</button>
+                  <Button className="keyword-btn" type="submit">
+                    Search Amazon
+                  </Button>
                 </React.Fragment>
               )}
             </Form>
-            <div>
-              {/* <div className="wrap">
-              <div className="search">
-                <input
-                  type="text"
-                  className="searchTerm"
-                  placeholder="What are you looking for?"
-                >
-                  <button type="submit" className="addButton">
-                    <i className="fa fa-search"></i>
-                  </button>
-                </input>
-                <button>ADD</button>
-              </div>
-            </div> */}
-              {/* <div className="InputAdd">input/add</div> */}
-            </div>
-            {/* <div className="ImageEl">
-            <img src={this.state.googleImage} />
-          </div> */}
           </div>
         </div>
       ) : (

@@ -1,10 +1,10 @@
 .App {
-	text-align: center;
-	width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 .App-logo {
-	height: 40vmin;
+  height: 40vmin;
 }
 
 /* .App-header {
@@ -35,20 +35,20 @@
 } */
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container-main {
-	background-image: url("../images/img3.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	height: 100vh;
+  background-image: url("../images/img3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
 nav .nav-item {
-	text-decoration: none !important;
-	color: black;
+  text-decoration: none !important;
+  color: black;
 }
 
 /* a .navbar-brand {
@@ -57,142 +57,186 @@ nav .nav-item {
 } */
 
 .header-upload {
-	padding-top: 25px;
-	margin-bottom: 30px;
+  padding-top: 25px;
+  margin-bottom: 30px;
 }
 
 input {
-	text-align: center;
+  text-align: center;
 }
-
-/* .form-container {
-	border: 1px solid;
-	width: 500px;
-	height: 500px;
-	margin: 0 auto;
-	box-shadow: #000;
-} */
 
 .btn-file {
-	position: relative;
-	overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 input {
-	margin: 0 auto;
-	max-width: 100%;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .btn-file input[type="file"] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	min-width: 100%;
-	min-height: 100%;
-	font-size: 100px;
-	text-align: center;
-	opacity: 0;
-	outline: none;
-	background: white;
-	cursor: inherit;
-	display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: center;
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
 }
 
 .test-page-container {
-	position: relative;
-	top: 100px;
-}
-
-.Container {
-	position: relative;
-	top: 100px;
-	width: 300px;
-}
-
-.delete-button {
-	padding: 5px;
+  position: relative;
+  top: 100px;
 }
 
 .form-class {
-	width: 300px;
-	margin: 0 auto;
+  width: 300px;
+  margin: 0 auto;
 }
 
 p .forgot-passport {
-	text-align: center;
+  text-align: center;
 }
 
 .form-main {
-	margin-top: 80px;
+  margin-top: 80px;
 }
 
 .form-main h2 {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .header-login {
-	margin-top: 80px;
-	margin-bottom: 20px;
+  margin-top: 80px;
+  margin-bottom: 20px;
 }
 
 button .submit {
-	margin: 10px 0;
-	padding-top: 20px;
+  margin: 10px 0;
+  padding-top: 20px;
 }
 
 .submit {
-	padding: 8px;
+  padding: 8px;
 }
 
 input {
-	width: 100%;
-	max-width: 300px;
-	box-sizing: border-box;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
 }
 
 .google-button {
-	margin-top: 7px;
+  margin-top: 7px;
 }
 
 .submit {
-	padding: 7px;
+  padding: 7px;
 }
 
 .google-button a {
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .block-header {
-	margin: 0 100px;
-	margin-top: 30px;
-	margin-bottom: 40px;
-	text-align: left;
+  margin: 0 100px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  text-align: left;
 }
 
 .block-p {
-	margin: 0 100px;
-	margin-bottom: 15px;
-	text-align: justify;
+  margin: 0 100px;
+  margin-bottom: 15px;
+  text-align: justify;
 }
 
 @media only screen and (max-width: 600px) {
-	/* body {
+  /* body {
 		box-sizing: content-box !important;
 	} */
-	.block-header {
-		margin: 0 60px;
-		margin-top: 30px;
-		margin-bottom: 40px;
-		text-align: left;
-	}
-	.block-p {
-		margin: 0 40px;
-		margin-bottom: 15px;
-		text-align: justify;
-	}
+  .block-header {
+    margin: 0 60px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+  .block-p {
+    margin: 0 40px;
+    margin-bottom: 15px;
+    text-align: justify;
+  }
 }
 
 .box-profile {
-	margin-top: 20px;
+  margin-top: 20px;
+}
+
+.Container {
+  margin: 0;
+}
+
+.delete-button {
+  padding: 5px;
+  border: none;
+}
+
+.FormKeyWords {
+  display: flex;
+  justify-content: center;
+  background-image: url("../images/kitchen.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100vw;
+  height: 93vh;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.Keyword-list {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Keyword {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  font-weight: 700;
+  color: rgb(54, 58, 64);
+}
+
+.keyword-input {
+  border: solid 1px black;
+  margin: 10px;
+}
+
+.keyword-btn {
+  margin: 5px;
+  background-color: rgb(53, 58, 64);
+  border: none;
 }
