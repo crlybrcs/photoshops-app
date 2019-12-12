@@ -147,7 +147,7 @@ class Test extends Component {
             </div>
           ))
         ) : (
-          <div>Hello</div>
+          <div>Change this div to something meaningful</div>
         )}
         {!err ? <h3>Loading....</h3> : <>{err}</>}
       </div>

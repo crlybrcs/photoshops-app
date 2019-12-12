@@ -43,7 +43,7 @@ class Login extends Component {
 		return (
 			<div class="container">
 				<h2 className="header-login">Login</h2>
-				<Form onSubmit={this.handleSubmit}>
+				<Form className="form-class" onSubmit={this.handleSubmit}>
 					<Form.Group>
 						<Form.Label className="username-label" htmlFor="username">
 							Username:
@@ -53,6 +53,7 @@ class Login extends Component {
 							type="text"
 							name="username"
 							id="username"
+							placeholder="Enter your username"
 							value={this.state.username}
 							onChange={this.handleChange}
 						/>
@@ -64,27 +65,16 @@ class Login extends Component {
 							type="password"
 							name="password"
 							id="password"
+							placeholder="Enter your password"
 							value={this.state.password}
 							onChange={this.handleChange}
 						/>
 					</Form.Group>
 					{this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
-
-					<p className="forgot-password mt-2 text-center">
-						Don't have an account yet? <a href="/signup">Signup</a>
-					</p>
-
 					<Button className="btn btn-dark btn-block submit" type="submit">
 						Log in
 					</Button>
 					<div className="box">
-						{/* <GoogleButton
-							id="googleButton"
-							type="dark"
-							onClick={() => {
-								console.log('Google Button clicked');
-							}}
-						/> */}
 						<GoogleButtonSignUp>
 							<a
 								className="nav-item nav-link active pr-2"
@@ -93,6 +83,9 @@ class Login extends Component {
 								Google Sign in
 							</a>
 						</GoogleButtonSignUp>
+						<p className="forgot-password mt-2 text-center">
+							Don't have an account yet? <a href="/signup">Signup</a>
+						</p>
 					</div>
 				</Form>
 			</div>

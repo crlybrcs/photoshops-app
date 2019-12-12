@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Navbar as Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import About from './About';
 import { logout } from './services/auth';
 // import { Login } from "../components/Login";
+import Profile from "./Profile";
 
 const Navbar = props => {
 
@@ -15,17 +15,18 @@ const Navbar = props => {
   
   
     return (
-      <Nav collapseOnSelect className="navbar navbar-default" fixed="top" expand="lg" bg="dark" variant="dark">
+      <Nav collapseOnSelect className="navbar navbar-default bg-faded"  sticky="top" expand="lg" bg="light" variant="light">
             <Nav.Brand href="/">Photoshops</Nav.Brand>
-        <Nav.Toggle aria-controls="responsive-navbar-nav basic-navbar-nav" />
+        <Nav.Toggle aria-controls="responsive-navbar-nav" />
             <Nav.Collapse id="responsive-navbar-nav">
-          <Nav className="navbar-nav ml-auto">
+          <Nav className="ml-auto justify-content-center">
             {props.user ? (
-              <>
+           <>
                 <Link to="/about" className="nav-item nav-link active pr-2">About</Link>
                 <Link to="/profile" className="nav-item nav-link active pr-2">Profile</Link>
+           
                 <Link to="/" className="nav-item nav-link active pr-2" onClick={handleLogout}>Logout</Link>
-              </>
+            </>
             ) : (
                 <React.Fragment>
                   {/* <a className="nav-item nav-link active pr-2" href={`${process.env.REACT_APP_API_URL || ""}/api/auth/google`}>Google Sign in</a> */}

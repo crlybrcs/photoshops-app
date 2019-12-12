@@ -44,63 +44,55 @@ class Signup extends Component {
 	render() {
 		//Everything that shows on browser here
 		return (
-			<div>
-				<form onSubmit={this.handleSubmit} className="form-main">
-					<h2>Sign Up</h2>
-
-					<div className="form-group">
-						<label>Username:</label>
-						<input
-							onChange={this.handleChange}
-							type="text"
-							name="username"
-							value={this.state.username}
-							className="form-control"
-							placeholder="Enter your first name"
-						/>
-					</div>
-
-					<div className="form-group">
-						<label
-						// onChange={(e) => {
-						// 	e.preventDefault();
-						// 	this.handleChange();
-						// }}
-						>
-							Password
-						</label>
-						<input
+			<div className="container">
+				<h2 className="header-login">Sign up</h2>
+				<Form onSubmit={this.handleSubmit} className="form-class">
+					<Form.Group>
+						<div className="form-group">
+							<Form.Label className="username-label" htmlFor="username">
+								Username:
+							</Form.Label>
+							<Form.Control
+								onChange={this.handleChange}
+								type="text"
+								name="username"
+								value={this.state.username}
+								className="form-control"
+								placeholder="Enter your username"
+							/>
+						</div>
+					</Form.Group>
+					<Form.Group>
+						<Form.Label htmlFor="password">Password: </Form.Label>
+						<Form.Control
+							// onChange={(e) => {
+							// 	e.preventDefault();
+							// 	this.handleChange();
 							type="password"
 							name="password"
 							value={this.state.password}
 							className="form-control"
 							onChange={this.handleChange}
-							placeholder="Enter password"
+							placeholder="Enter your password"
 						/>
-					</div>
-
+					</Form.Group>
 					{/* <div className="form-group">
 						<label>Last name</label>
 						<input type="text" className="form-control" placeholder="Enter your last name" />
-					</div> */}
-
-					<button
-						type="submit"
-						// onClick={(e) => {
+    </div> */}
+					<Button className="btn btn-dark btn-block submit" type="submit">
+						{/* // onClick={(e) => {
 						// 	e.preventDefault();
 						// 	this.handleSubmit(this.state.username, this.state.password);
-						// }}
-
-						className="btn btn-dark btn-block"
-					>
-						Sign Up
-					</button>
+						//  */}
+						Sign up
+					</Button>
 					<GoogleButtonSignUp />
 					<p className="forgot-password mt-2 text-center">
 						Already registered? <a href="/login">Log in</a>
 					</p>
 					{this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
-				</form>
+				</Form>
 			</div>
 		);
 	}

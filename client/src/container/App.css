@@ -1,12 +1,13 @@
 .App {
 	text-align: center;
+	width: 100%;
 }
 
 .App-logo {
 	height: 40vmin;
 }
 
-.App-header {
+/* .App-header {
 	background-color: #282c34;
 	min-height: 100vh;
 	display: flex;
@@ -17,34 +18,47 @@
 	color: white;
 }
 
-.App-link {
+/* .App-link {
 	color: #09d3ac;
+} */
+
+/* * {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+*:before,
+*:after {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+} */
+
+* {
+	box-sizing: border-box;
 }
 
 .container-main {
-	background-image: url("../images/background-img.jpg");
+	background-image: url("../images/img3.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+	height: 100vh;
 }
 
-.pr-2 {
+nav .nav-item {
 	text-decoration: none !important;
+	color: black;
 }
 
-@media only screen and (max-width: 640px) {
-	.navbar-nav {
-		display: inline-block;
-	}
-}
+/* a .navbar-brand {
+	font-size: 28px;
+	font-weight: 200;
+} */
 
 .header-upload {
-	margin-top: 80px;
+	padding-top: 25px;
 	margin-bottom: 30px;
-}
-
-.navbar {
-	height: 60px;
 }
 
 input {
@@ -92,13 +106,14 @@ input {
 .Container {
 	position: relative;
 	top: 100px;
+	width: 300px;
 }
 
 .delete-button {
 	padding: 5px;
 }
 
-form {
+.form-class {
 	width: 300px;
 	margin: 0 auto;
 }
@@ -120,11 +135,7 @@ p .forgot-passport {
 	margin-bottom: 20px;
 }
 
-.form-group {
-	margin: 10px;
-}
-
-button .btn-dark {
+button .submit {
 	margin: 10px 0;
 	padding-top: 20px;
 }
@@ -150,4 +161,38 @@ input {
 .google-button a {
 	color: white;
 	text-decoration: none;
+}
+
+.block-header {
+	margin: 0 100px;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	text-align: left;
+}
+
+.block-p {
+	margin: 0 100px;
+	margin-bottom: 15px;
+	text-align: justify;
+}
+
+@media only screen and (max-width: 600px) {
+	/* body {
+		box-sizing: content-box !important;
+	} */
+	.block-header {
+		margin: 0 60px;
+		margin-top: 30px;
+		margin-bottom: 40px;
+		text-align: left;
+	}
+	.block-p {
+		margin: 0 40px;
+		margin-bottom: 15px;
+		text-align: justify;
+	}
+}
+
+.box-profile {
+	margin-top: 20px;
 }
