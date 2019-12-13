@@ -144,7 +144,7 @@ class Test extends Component {
     const prodName = posts.title && posts.title.split(" ").join("-");
     const amz = "http://amazon.com";
     const url = `${amz}/${prodName}/dp/`;
-
+    console.log("HEEEEEE", this.props);
     return (
       <div className="test-page-container">
         <Filtering

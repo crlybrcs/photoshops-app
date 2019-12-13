@@ -2,17 +2,24 @@ import React from "react";
 
 const NoProducts = props => {
   const { err, onSubmit } = props;
+
+  const goBack = () => {
+    console.log("clicked");
+    props.history.push("/");
+  };
+  console.log(props);
   return (
     <div>
       {!err ? (
-        <h3>LoadingFOO....</h3>
+        <h3>Loading....</h3>
       ) : (
         <>
           <br />
-          {err} <br />{" "}
+          {err}
+          <br />
           <button
             onClick={() => {
-              props.history.push("/");
+              goBack();
             }}
           >
             Return to Keywords
