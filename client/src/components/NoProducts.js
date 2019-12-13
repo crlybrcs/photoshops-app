@@ -17,7 +17,7 @@ const NoProducts = props => {
           <br />
           {err}
           <br />
-          <button
+            <button className="return-btn button btn primary"
             onClick={() => {
               goBack();
             }}

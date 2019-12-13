@@ -419,3 +419,8 @@ a:hover .navbar-main {
 	max-width: 300px;
 	margin: 5px auto;
 }
+
+.return-btn {
+	margin-top: 12px;
+	color: white;
+}
