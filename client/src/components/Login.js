@@ -50,7 +50,7 @@ class Login extends Component {
 		console.log('user:', this.props.user);
 
 		return (
-			<div class="container">
+			<div className="container">
 				<h2 className="header-login">Login</h2>
 				<Form className="form-class" onSubmit={this.handleSubmit}>
 					<Form.Group>
