@@ -128,7 +128,7 @@ class GRForms extends Component {
             <Form className="Form" onSubmit={this.handleSubmit}>
               <div>
                 <Button
-                  className="keyword-btn"
+                  className="keyword-btn add"
                   onClick={() => {
                     this.goBack();
                   }}

@@ -40,7 +40,7 @@ const Navbar = props => {
               <Link to="/profile" className="nav-item nav-link active">
                 Profile
               </Link>
-              <Link to="/welcomepage" className="nav-item nav-link active">Welcome</Link>
+              {/* <Link to="/welcomepage" className="nav-item nav-link active">Welcome</Link> */}
               <Link
                 className="nav-item nav-link active"
                 to="/favorites"
@@ -61,7 +61,7 @@ const Navbar = props => {
               {/* <a className="nav-item nav-link active pr-2" href={`${process.env.REACT_APP_API_URL || ""}/api/auth/google`}>Google Sign in</a> */}
 
               <NavLink className="nav-item nav-link active pr-2" to="/signup">
-                Sign up
+                Signup
               </NavLink>
               <NavLink className="nav-item nav-link active pr-2" to="/login">
                 Login

@@ -75,17 +75,17 @@ app.use(passport.session());
 app.use(flash());
 require('./passport')(app);
 
-app.get('/', function(req, res) {
-	res.render('index', { user: req.user });
-});
+// app.get('/', function(req, res) {
+// 	res.render('index', { user: req.user });
+// });
 
 // app.get("/account", ensureAuthenticated, function(req, res) {
 //   res.render("account", { user: req.user });
 // });
 
-app.get('/login', function(req, res) {
-	res.render('login', { user: req.user });
-});
+// app.get('/login', function(req, res) {
+// 	res.render('login', { user: req.user });
+// });
 
 // GET /auth/amazon
 //   Use passport.authenticate() as route middleware to authenticate the
