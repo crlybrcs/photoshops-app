@@ -7,7 +7,7 @@ const User = require('../models/User');
 
 router.post('/test/new', (req, res) => {
 	const queryString = req.body.keywords.join('+');
-	axios.get(`http://3ab1e01d.ngrok.io/?query=${queryString}`).then((response) => {
+	axios.get(`http://139.59.139.28/?query=${queryString}`).then((response) => {
 		// const price = response.data[0].price;
 		// console.log(Number(price.split("$").join("")));
 		const smallerRes = [ ...response.data ].slice(0, 12);
