@@ -6,7 +6,7 @@ import { UserRefreshClient } from 'google-auth-library';
 
 class Profile extends React.Component {
 	state = {
-		name: this.props.user.name,
+		name: this.props.name,
 		surname: this.props.user.surname,
 		email: this.props.user.email,
 		message: ''
