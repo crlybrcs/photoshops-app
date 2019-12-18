@@ -57,35 +57,65 @@ class Test extends Component {
   };
 
   handleAscendingPriceSort = event => {
-    console.log(event);
-    let priceSort = event.sort((a, b) => {
+    
+
+    const priceSort = [...event]
+    priceSort.sort((a, b) => {
       console.log("PRICES:", a.price, b.price);
-      return (
-        (parseFloat(a.price.slice(1)) || 0) -
-        (parseFloat(b.price.slice(1)) || 0)
-      );
-    });
-    console.log(priceSort);
+      return a.price - b.price
+
+    })
+    const priceCheck = priceSort.map(el => el.price)
+    console.log(priceCheck)
+    // priceSort.sort((a, b))
+    // let priceSort = event.sort((a, b) => {
+    //   return (
+    //     (parseFloat(a.price.slice(1)) || 0) -
+    //     (parseFloat(b.price.slice(1)) || 0)
+    //   );
+    // });
+    // console.log(priceSort);
     this.setState({
       posts: priceSort
     });
   };
 
   handleDescendingPriceSort = event => {
-    let priceSort = event.sort((a, b) => {
+    // let priceSort = event.sort((a, b) => {
+    //   console.log("PRICES:", a.price, b.price);
+    //   return (
+    //     (parseFloat(b.price.slice(1)) || 0) -
+    //     (parseFloat(a.price.slice(1)) || 0)
+    //   );
+    // });
+    // console.log(priceSort);
+    // this.setState({
+    //   posts: priceSort
+    // });
+    const priceSort = [...event]
+    priceSort.sort((a, b) => {
       console.log("PRICES:", a.price, b.price);
-      return (
-        (parseFloat(b.price.slice(1)) || 0) -
-        (parseFloat(a.price.slice(1)) || 0)
-      );
-    });
-    console.log(priceSort);
+      return b.price - a.price
+
+    })
+    const priceCheck = priceSort.map(el => el.price)
+    console.log(priceCheck)
+    // priceSort.sort((a, b))
+    // let priceSort = event.sort((a, b) => {
+    //   return (
+    //     (parseFloat(a.price.slice(1)) || 0) -
+    //     (parseFloat(b.price.slice(1)) || 0)
+    //   );
+    // });
+    // console.log(priceSort);
     this.setState({
       posts: priceSort
     });
   };
 
   handleRatingSort = event => {
+
+    
     let starsSort = event.sort((a, b) => {
       console.log("PRICES:", a.stars, b.stars);
       return (b.stars || 0) - (a.stars || 0);

@@ -92,19 +92,19 @@ require('./passport')(app);
 //   request.  The first step in Amazon authentication will involve
 //   redirecting the user to amazon.com.  After authorization, Amazon
 //   will redirect the user back to this application at /auth/amazon/callback
-app.get('/auth/amazon', passport.authenticate('amazon', { scope: [ 'profile', 'postal_code' ] }), function(req, res) {
-	// The request will be redirected to Amazon for authentication, so this
-	// function will not be called.
-});
+// app.get('/auth/amazon', passport.authenticate('amazon', { scope: [ 'profile', 'postal_code' ] }), function(req, res) {
+// The request will be redirected to Amazon for authentication, so this
+// function will not be called.
+// });
 
 // GET /auth/amazon/callback
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/auth/amazon/callback', passport.authenticate('amazon', { failureRedirect: '/login' }), function(req, res) {
-	res.redirect('/');
-});
+// app.get('/auth/amazon/callback', passport.authenticate('amazon', { failureRedirect: '/login' }), function(req, res) {
+// 	res.redirect('/');
+// });
 
 app.get('/logout', function(req, res) {
 	req.logout();

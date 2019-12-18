@@ -6,9 +6,9 @@ import { UserRefreshClient } from 'google-auth-library';
 
 class Profile extends React.Component {
 	state = {
-		name: '',
-		surname: '',
-		email: '',
+		name: this.props.user.name,
+		surname: this.props.user.surname,
+		email: this.props.user.email,
 		message: ''
 	};
 
@@ -21,9 +21,11 @@ class Profile extends React.Component {
 
 	updateUser = (event) => {
 		event.preventDefault();
-		axios.post(`/api/profile`, this.state).then((response) => {
-			console.log(response.data);
+		axios.post('/api/profile', this.state).then((response) => {
+			console.log('RESPONSE DATA:', response.data);
 			this.props.setUser(response.data);
+			console.log('THIS.PROPS axios', this.props);
+			console.log('RESPONSE MESSAGE', response.data.message);
 			this.props.history.push('/profile');
 			this.setState(
 				{
@@ -39,7 +41,8 @@ class Profile extends React.Component {
 	};
 
 	render() {
-		console.log(this.props);
+		console.log('RENDER THIS PROPS', this.props);
+
 		return (
 			<div className="box-profile">
 				<Form onSubmit={this.updateUser} className="form-class profile">
@@ -73,7 +76,7 @@ class Profile extends React.Component {
 							placeholder="Enter email"
 						/>
 					</Form.Group>
-					<Button className="profile-submit" variant="dark" type="button">
+					<Button className="profile-submit" variant="dark" type="submit">
 						Submit
 					</Button>
 				</Form>
